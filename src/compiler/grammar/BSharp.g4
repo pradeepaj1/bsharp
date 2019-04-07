@@ -9,9 +9,10 @@ bSharp 								: 'start' body 'end';
 
 body								: declaration | statements ;
 
-declaration     					: dataType variable ';' | dataType variable '=' value ';';
+declaration     					: doubleType variable ';' | doubleType variable '=' value ';'
+                                       | boolType variable ';' | boolType variable '=' booleanValue ';';
 
-write								: 'write' (WORD) ';';
+write								: 'write' WORD ';';
 
 statements							: singleStatement | singleStatement statements;
 
@@ -31,15 +32,11 @@ booleanExpression					: expression | booleanExpression relOperator booleanExpres
 
 variable							: (LOWERCASE | UPPERCASE | '_')+ ;
 
-fragment WORD						: (LOWERCASE | UPPERCASE | ' ')* ;
-
-value								: [0-9]+ '.' [0-9]+ ;
+value								: DIGIT+ '.' DIGIT+ ;
 
 booleanValue 						: (TRUE | FALSE);
 
-TRUE								: T R U E;
 
-FALSE								: F A L S E;
 
 doubleType							: 'double' ;
 
@@ -47,9 +44,10 @@ boolType							: 'bool';
 
 expression							: expression op expression |'(' expression ')' | | variable | value;
 
-relOperator							: '<' | '>' | '<=' | '>=' | == | != | && | ||;
+relOperator							: '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&' | '||';
 
 op									: '+' | '-' | '*' | '/';
+
 
 fragment T			: ('T'|'t') ;
 fragment R			: ('R'|'r') ;
@@ -59,7 +57,11 @@ fragment F          : ('F'|'f') ;
 fragment A          : ('A'|'a') ;
 fragment L          : ('L'|'l') ;
 fragment S          : ('S'|'s') ;
-
+fragment TRUE		: T R U E;
+fragment FALSE		: F A L S E;
+fragment DIGIT      : [0-9];
 fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
+fragment WORD		: (LOWERCASE | UPPERCASE | ' ')* ;
+
 
