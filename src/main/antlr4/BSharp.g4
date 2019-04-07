@@ -34,9 +34,7 @@ variable							: (LOWERCASE | UPPERCASE | '_')+ ;
 
 value								: DIGIT+ '.' DIGIT+ ;
 
-booleanValue 						: (TRUE | FALSE);
-
-
+booleanValue 						: TRUE | FALSE;
 
 doubleType							: 'double' ;
 
@@ -49,16 +47,8 @@ relOperator							: '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&' | '||';
 op									: '+' | '-' | '*' | '/';
 
 
-fragment T			: ('T'|'t') ;
-fragment R			: ('R'|'r') ;
-fragment U          : ('U'|'u') ;
-fragment E          : ('E'|'e') ;
-fragment F          : ('F'|'f') ;
-fragment A          : ('A'|'a') ;
-fragment L          : ('L'|'l') ;
-fragment S          : ('S'|'s') ;
-fragment TRUE		: T R U E;
-fragment FALSE		: F A L S E;
+fragment TRUE		: 'True';
+fragment FALSE		: 'False';
 fragment DIGIT      : [0-9];
 fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
