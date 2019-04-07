@@ -16,7 +16,7 @@ write								: 'write' WORD ';';
 
 statements							: singleStatement | singleStatement statements;
 
-singleStatement						: assignment ';' | boolAssignment ';' | conditionalStatement | while | write;
+singleStatement						: assignment ';' | boolAssignment ';' | conditionalStatement | whileStatement | write;
 
 assignment      					: variable '=' value | doubleType variable '=' value| doubleType variable '=' expression | variable '=' expression ;
 
@@ -26,7 +26,7 @@ conditionalStatement				: 'if' '(' booleanExpression ')' blockOfStatements ('els
 
 blockOfStatements					: '{' statements '}';
 
-while								: 'while' '(' booleanExpression ')' blockOfStatements;
+whileStatement						: 'while' '(' booleanExpression ')' blockOfStatements;
 
 booleanExpression					: expression | booleanExpression relOperator booleanExpression | variable | value | booleanValue;
 
