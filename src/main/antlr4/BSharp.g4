@@ -7,61 +7,90 @@ grammar BSharp;
 
 bSharp 								: 'start' body 'end';
 
-body								: declaration | statements ;
+body								: declaration* statements;
 
-declaration     					: doubleType variable ';' | doubleType variable '=' value ';'
-                                       | boolType variable ';' | boolType variable '=' booleanValue ';';
+declaration     					: DOUBLE WHITESPACE VARIABLE SEMICOLON
+                                    | DOUBLE WHITESPACE VARIABLE EQUAL DOUBLEVALUE SEMICOLON
+                                    | BOOL WHITESPACE VARIABLE SEMICOLON
+                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE SEMICOLON;
 
-write								: 'write' WORD ';';
+writeStatement						: WRITE WHITESPACE WORD SEMICOLON;
 
-statements							: singleStatement | singleStatement statements;
+statements							: singleStatement
+                                    | singleStatement statements;
 
-singleStatement						: assignment ';' | boolAssignment ';' | conditionalStatement | whileStatement | write;
+singleStatement						: assignmentStatement SEMICOLON
+                                    | boolAssignment SEMICOLON
+                                    | conditionalStatement
+                                    | whileStatement
+                                    | writeStatement;
 
-assignment      					: variable '=' value | doubleType variable '=' value| doubleType variable '=' expression | variable '=' expression ;
+assignmentStatement      			: VARIABLE EQUAL DOUBLEVALUE
+                                    | VARIABLE EQUAL BOOLVALUE
+                                    | DOUBLE VARIABLE EQUAL DOUBLEVALUE
+                                    | BOOL VARIABLE EQUAL BOOLVALUE
+                                    | DOUBLE VARIABLE EQUAL arithmeticExpression
+                                    | BOOL VARIABLE EQUAL booleanExpression
+                                    | VARIABLE EQUAL arithmeticExpression ;
 
-boolAssignment						: variable '=' booleanValue | boolType variable '=' booleanValue;
+boolAssignment						: VARIABLE EQUAL BOOLVALUE
+                                    | BOOL VARIABLE EQUAL BOOLVALUE;
 
-conditionalStatement				: 'if' '(' booleanExpression ')' blockOfStatements ('else' blockOfStatements)?;
+conditionalStatement				: IF '(' booleanExpression ')' blockOfStatements (ELSE blockOfStatements)?;
 
 blockOfStatements					: '{' statements '}';
 
-whileStatement						: 'while' '(' booleanExpression ')' blockOfStatements;
+whileStatement						: WHILE '(' booleanExpression ')' blockOfStatements;
 
-booleanExpression					: expression | booleanExpression relOperator booleanExpression | variable | value | booleanValue;
+booleanExpression                   : relationalExpression | logicalExpression;
 
-variable							: (LOWERCASE | UPPERCASE | '_')+ ;
+logicalExpression                   : arithmeticExpression
+                                    | logicalExpression logicalOperator logicalExpression
+                                    | VARIABLE
+                                    | BOOLVALUE;
 
-value								: DIGIT+ '.' DIGIT+ ;
-
-booleanValue 						: (TRUE | FALSE);
-
-
-
-doubleType							: 'double' ;
-
-boolType							: 'bool';
-
-expression							: expression op expression |'(' expression ')' | | variable | value;
-
-relOperator							: '<' | '>' | '<=' | '>=' | '==' | '!=' | '&&' | '||';
-
-op									: '+' | '-' | '*' | '/';
+relationalExpression				: arithmeticExpression
+                                    | relationalExpression relationalOperator relationalExpression
+                                    | VARIABLE
+                                    | DOUBLEVALUE;
 
 
-fragment T			: ('T'|'t') ;
-fragment R			: ('R'|'r') ;
-fragment U          : ('U'|'u') ;
-fragment E          : ('E'|'e') ;
-fragment F          : ('F'|'f') ;
-fragment A          : ('A'|'a') ;
-fragment L          : ('L'|'l') ;
-fragment S          : ('S'|'s') ;
-fragment TRUE		: T R U E;
-fragment FALSE		: F A L S E;
+arithmeticExpression				: arithmeticExpression arithmeticOperator arithmeticExpression
+                                    |'(' arithmeticExpression ')'
+                                    | VARIABLE
+                                    | DOUBLEVALUE;
+
+relationalOperator					: '<' | '>' | '<=' | '>=' | '==' | '!=';
+
+logicalOperator					    : '&&' | '||' | '!';
+
+arithmeticOperator					: '+' | '-' | '*' | '/';
+
+
+/*
+* Lexer Rules.
+*
+*/
 fragment DIGIT      : [0-9];
 fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
-fragment WORD		: (LOWERCASE | UPPERCASE | ' ')* ;
+fragment TRUE		: 'True';
+fragment FALSE		: 'False';
+WHITESPACE : ' ';
+WORD		: '"' (LOWERCASE|UPPERCASE|'_'| WHITESPACE)+ '"';
+WRITE: 'write' ;
+DOUBLEVALUE		: DIGIT+ '.' DIGIT+ ;
+BOOLVALUE   : TRUE | FALSE ;
+DOUBLE	    : 'double';
+BOOL        : 'bool';
+SEMICOLON   : ';';
+EQUAL       : '=';
+IF          : 'if';
+ELSE        : 'else';
+WHILE       : 'while';
+VARIABLE : (LOWERCASE | UPPERCASE | '_')+ ;
+
+
+
 
 
