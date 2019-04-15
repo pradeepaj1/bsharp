@@ -1,2 +1,5 @@
-int a = 10
-print a
+start
+bool c=False;
+double d=10.0;
+write "Hello";
+end
