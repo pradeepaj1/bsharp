@@ -5,9 +5,9 @@ grammar BSharp;
 *
 */
 
-bSharp 								: 'start' body 'end';
+bSharp 								: 'start' NEWLINE body NEWLINE 'end';
 
-body								: declaration* statements;
+body								: (declaration NEWLINE)* statements;
 
 declaration     					: DOUBLE WHITESPACE VARIABLE SEMICOLON
                                     | DOUBLE WHITESPACE VARIABLE EQUAL DOUBLEVALUE SEMICOLON
@@ -16,8 +16,8 @@ declaration     					: DOUBLE WHITESPACE VARIABLE SEMICOLON
 
 writeStatement						: WRITE WHITESPACE WORD SEMICOLON;
 
-statements							: singleStatement
-                                    | singleStatement statements;
+statements							: singleStatement NEWLINE
+                                    | singleStatement NEWLINE statements;
 
 singleStatement						: assignmentStatement SEMICOLON
                                     | boolAssignment SEMICOLON

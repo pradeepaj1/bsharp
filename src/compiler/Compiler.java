@@ -6,16 +6,16 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.apache.commons.io.FileUtils;
 
-
+import java.io.File;
+import java.io.IOException;
 
 public class Compiler {
     public static void main(String args[]) {
         System.out.println("compilation started.. ");
 
-
-         String testStatement = "write \"hel llo_\";";
-         BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(testStatement));
+         BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile()));
          CommonTokenStream tokens = new CommonTokenStream(lexer);
          BSharpParser parser = new BSharpParser(tokens);
          ParseTree tree = ((BSharpParser) parser).writeStatement();
@@ -24,5 +24,15 @@ public class Compiler {
          DeclarationListener listener= new DeclarationListener();
          walker.walk(listener, tree);
 
+    }
+    private static String readProgramFromFile() {
+        String program = null;
+        try {
+            program = FileUtils.readFileToString(
+                    new File("data/sampleprogram1"), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return program;
     }
 }
