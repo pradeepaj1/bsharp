@@ -27,14 +27,14 @@ singleStatement						: assignmentStatement SEMICOLON
 
 assignmentStatement      			: VARIABLE EQUAL DOUBLEVALUE
                                     | VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE VARIABLE EQUAL DOUBLEVALUE
-                                    | BOOL VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE VARIABLE EQUAL arithmeticExpression
-                                    | BOOL VARIABLE EQUAL booleanExpression
-                                    | VARIABLE EQUAL arithmeticExpression ;
+                                    | DOUBLE WHITESPACE VARIABLE EQUAL DOUBLEVALUE
+                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE
+                                    | DOUBLE WHITESPACE VARIABLE EQUAL arithmeticExpression
+                                    | BOOL WHITESPACE VARIABLE EQUAL booleanExpression
+                                    | VARIABLE EQUAL arithmeticExpression;
 
 boolAssignment						: VARIABLE EQUAL BOOLVALUE
-                                    | BOOL VARIABLE EQUAL BOOLVALUE;
+                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE;
 
 conditionalStatement				: IF '(' booleanExpression ')' blockOfStatements (ELSE blockOfStatements)?;
 

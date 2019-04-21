@@ -11,20 +11,21 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
+
 public class Compiler {
     public static void main(String args[]) {
         System.out.println("compilation started.. ");
 
-         BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile()));
-         CommonTokenStream tokens = new CommonTokenStream(lexer);
-         BSharpParser parser = new BSharpParser(tokens);
-         ParseTree tree = ((BSharpParser) parser).writeStatement();
-         System.out.println(tree);
-         ParseTreeWalker walker = new ParseTreeWalker();
-         BSharpListener listener= new BSharpListener();
-         walker.walk(listener, tree);
-
+        BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile()));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        BSharpParser parser = new BSharpParser(tokens);
+        ParseTree tree = parser.bSharp();
+        System.out.println(tree);
+        ParseTreeWalker walker = new ParseTreeWalker();
+        BSharpListener listener= new BSharpListener();
+        walker.walk(listener, tree);
     }
+
     private static String readProgramFromFile() {
         String program = null;
         try {
