@@ -21,7 +21,7 @@ public class Compiler {
          ParseTree tree = ((BSharpParser) parser).writeStatement();
          System.out.println(tree);
          ParseTreeWalker walker = new ParseTreeWalker();
-         DeclarationListener listener= new DeclarationListener();
+         BSharpListener listener= new BSharpListener();
          walker.walk(listener, tree);
 
     }
