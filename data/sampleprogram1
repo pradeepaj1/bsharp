@@ -1,5 +1,8 @@
 start
 bool c=False;
-double d=10.0;
+double d;
+bool e;
+e=False;
+d=10.0;
 write "Hello";
 end

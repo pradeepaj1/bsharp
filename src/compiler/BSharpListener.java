@@ -21,7 +21,7 @@ public class BSharpListener extends BSharpBaseListener {
 
         if (ctx.children.size() > 4) {
             intermediateCode.add("MOV ACC " + ctx.children.get(4));
-            intermediateCode.add("MOV " +  ctx.children.get(2) + " " + "ACC");
+            intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
         }
 
     }
@@ -55,5 +55,49 @@ public class BSharpListener extends BSharpBaseListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void enterAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
+        super.enterAssignmentStatement(ctx);
+        if(ctx.children.size() == 3)
+        {
+            intermediateCode.add("MOV ACC " + ctx.children.get(2));
+            intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
+        }
+        else
+        {
+            intermediateCode.add("TYPE "+ctx.children.get(0)+" "+ctx.children.get(2));
+            intermediateCode.add("MOV ACC " + ctx.children.get(4));
+            intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
+        }
+
+    }
+
+    @Override
+    public void exitAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
+        super.exitAssignmentStatement(ctx);
+    }
+
+    @Override
+    public void enterBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
+        super.enterBoolAssignment(ctx);
+        if(ctx.children.size() == 3)
+        {
+            intermediateCode.add("MOV ACC " + ctx.children.get(2));
+            intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
+        }
+        else
+        {
+            intermediateCode.add("TYPE "+ctx.children.get(0)+" "+ctx.children.get(2));
+            intermediateCode.add("MOV ACC " + ctx.children.get(4));
+            intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
+        }
+
+    }
+
+    @Override
+    public void exitBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
+        super.exitBoolAssignment(ctx);
     }
 }
