@@ -56,4 +56,40 @@ public class BSharpListener extends BSharpBaseListener {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
+        super.enterConditionalStatement(ctx);
+        intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
+    }
+
+    @Override
+    public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
+        super.exitConditionalStatement(ctx);
+        intermediateCode.add("END IF");
+    }
+
+    @Override
+    public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
+        super.enterLogicalOperator(ctx);
+        intermediateCode.add("TYPE ACC" + " " + ctx.children.get(0));
+    }
+
+    @Override
+    public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
+        super.exitLogicalOperator(ctx);
+        intermediateCode.add("EXIT ACC");
+    }
+
+    @Override
+    public void enterRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
+        super.enterRelationalOperator(ctx);
+        intermediateCode.add("TYPE ACC" + " " + ctx.children.get(0));
+    }
+
+    @Override
+    public void exitRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
+        super.exitRelationalOperator(ctx);
+        intermediateCode.add("EXIT ACC");
+    }
 }
