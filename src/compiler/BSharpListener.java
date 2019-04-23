@@ -62,8 +62,12 @@ public class BSharpListener extends BSharpBaseListener {
         super.enterAssignmentStatement(ctx);
         if(ctx.children.size() == 3)
         {
-            intermediateCode.add("MOV ACC " + ctx.children.get(2));
-            intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
+
+
+            if (ctx.children.get(2) instanceof BSharpParser.ArithmeticExpressionContext){
+                intermediateCode.add("MOV ACC " + ctx.children.get(2).getChild(0));
+                intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
+            }
         }
         else
         {
@@ -77,6 +81,8 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
         super.exitAssignmentStatement(ctx);
+
+
     }
 
     @Override
@@ -97,7 +103,23 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
     @Override
+    public void enterArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx)
+    {
+        super.enterArithmeticExpression(ctx);
+
+        if (ctx.children.size() == 1) {
+            return;
+        }
+
+    }
+    @Override
     public void exitBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
         super.exitBoolAssignment(ctx);
+    }
+    @Override
+    public void enterLogicalExpression(BSharpParser.LogicalExpressionContext ctx)
+    {
+        super.enterLogicalExpression(ctx);
+
     }
 }

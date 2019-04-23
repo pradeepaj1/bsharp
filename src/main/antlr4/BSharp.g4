@@ -89,6 +89,7 @@ IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
 VARIABLE : (LOWERCASE | UPPERCASE | '_')+ ;
+NEWLINE : ('\r'? '\n' | '\r')+ ;
 
 
 
