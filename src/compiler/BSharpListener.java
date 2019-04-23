@@ -121,5 +121,72 @@ public class BSharpListener extends BSharpBaseListener {
     {
         super.enterLogicalExpression(ctx);
 
+    public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
+        super.enterConditionalStatement(ctx);
+        intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
+    }
+
+    @Override
+    public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
+        super.exitConditionalStatement(ctx);
+        intermediateCode.add("END IF");
+    }
+
+    @Override
+    public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
+        super.enterLogicalOperator(ctx);
+        intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
+        if (ctx.children.get(0).equals("&&")){
+            intermediateCode.add("AND_CHECK");
+        }
+        else if (ctx.children.get(0).equals("||")){
+            intermediateCode.add("OR_CHECK");
+        }
+        else if (ctx.children.get(0).equals("!")){
+            intermediateCode.add("NEGATION_CHECK");
+        }
+    }
+
+    @Override
+    public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
+        super.exitLogicalOperator(ctx);
+        intermediateCode.add("EXIT OP");
+    }
+
+    @Override
+    public void enterRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
+        super.enterRelationalOperator(ctx);
+        intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
+    }
+
+    @Override
+    public void exitRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
+        super.exitRelationalOperator(ctx);
+        intermediateCode.add("EXIT OP");
+    }
+
+    @Override
+    public void enterWhileStatement(BSharpParser.WhileStatementContext ctx) {
+        super.enterWhileStatement(ctx);
+        intermediateCode.add("BEGIN WHILE" + " " + ctx.children.get(2));
+    }
+
+    @Override
+    public void exitWhileStatement(BSharpParser.WhileStatementContext ctx) {
+        super.exitWhileStatement(ctx);
+        intermediateCode.add("END WHILE");
+    }
+
+    @Override
+    public void enterRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
+        super.enterRelationalExpression(ctx);
+        intermediateCode.add("ENTER REL" + " " + ctx.children.get(1));
+    }
+
+
+    @Override
+    public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
+        super.exitRelationalExpression(ctx);
+        intermediateCode.add("EXIT REL");
     }
 }
