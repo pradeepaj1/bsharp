@@ -59,3 +59,4 @@ NEWLINE=33
 'if'=29
 'else'=30
 'while'=31
+'\n'=33

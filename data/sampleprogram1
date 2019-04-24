@@ -1,9 +1,3 @@
 start
-bool c=False;
-double b=5.0;
-double a=2.0;
-bool e;
-e=False;
-d=a+b;
-write "Hello";
+write "H";
 end

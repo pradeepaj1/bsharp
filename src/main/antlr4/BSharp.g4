@@ -5,7 +5,7 @@ grammar BSharp;
 *
 */
 
-bSharp 								: 'start' NEWLINE body NEWLINE 'end';
+bSharp 								: 'start' NEWLINE body 'end';
 
 body								: (declaration NEWLINE)* statements;
 
@@ -89,9 +89,4 @@ IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
 VARIABLE : (LOWERCASE | UPPERCASE | '_')+ ;
-NEWLINE : ('\r'? '\n' | '\r')+ ;
-
-
-
-
-
+NEWLINE     : '\n';

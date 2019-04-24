@@ -1,14 +1,8 @@
 package main.antlr4.generatecode;// Generated from BSharp.g4 by ANTLR 4.7
-
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
@@ -42,7 +36,7 @@ public class BSharpParser extends Parser {
 		null, "'start'", "'end'", "'('", "')'", "'{'", "'}'", "'<'", "'>'", "'<='", 
 		"'>='", "'=='", "'!='", "'&&'", "'||'", "'!'", "'+'", "'-'", "'*'", "'/'", 
 		"' '", null, "'write'", null, null, "'double'", "'bool'", "';'", "'='", 
-		"'if'", "'else'", "'while'"
+		"'if'", "'else'", "'while'", null, "'\n'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
@@ -100,10 +94,7 @@ public class BSharpParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class BSharpContext extends ParserRuleContext {
-		public List<TerminalNode> NEWLINE() { return getTokens(BSharpParser.NEWLINE); }
-		public TerminalNode NEWLINE(int i) {
-			return getToken(BSharpParser.NEWLINE, i);
-		}
+		public TerminalNode NEWLINE() { return getToken(BSharpParser.NEWLINE, 0); }
 		public BodyContext body() {
 			return getRuleContext(BodyContext.class,0);
 		}
@@ -113,11 +104,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_bSharp; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterBSharp(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterBSharp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitBSharp(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitBSharp(this);
 		}
 	}
 
@@ -134,8 +125,6 @@ public class BSharpParser extends Parser {
 			setState(38);
 			body();
 			setState(39);
-			match(NEWLINE);
-			setState(40);
 			match(T__1);
 			}
 		}
@@ -170,11 +159,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_body; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterBody(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterBody(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitBody(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitBody(this);
 		}
 	}
 
@@ -185,25 +174,25 @@ public class BSharpParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47);
+			setState(46);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(42);
+					setState(41);
 					declaration();
-					setState(43);
+					setState(42);
 					match(NEWLINE);
 					}
-					}
+					} 
 				}
-				setState(49);
+				setState(48);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
 			}
-			setState(50);
+			setState(49);
 			statements();
 			}
 		}
@@ -233,11 +222,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_declaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterDeclaration(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitDeclaration(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitDeclaration(this);
 		}
 	}
 
@@ -245,66 +234,66 @@ public class BSharpParser extends Parser {
 		DeclarationContext _localctx = new DeclarationContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_declaration);
 		try {
-			setState(72);
+			setState(71);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(52);
+				setState(51);
 				match(DOUBLE);
-				setState(53);
+				setState(52);
 				match(WHITESPACE);
-				setState(54);
+				setState(53);
 				match(VARIABLE);
-				setState(55);
+				setState(54);
 				match(SEMICOLON);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(56);
+				setState(55);
 				match(DOUBLE);
-				setState(57);
+				setState(56);
 				match(WHITESPACE);
-				setState(58);
+				setState(57);
 				match(VARIABLE);
-				setState(59);
+				setState(58);
 				match(EQUAL);
-				setState(60);
+				setState(59);
 				match(DOUBLEVALUE);
-				setState(61);
+				setState(60);
 				match(SEMICOLON);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(62);
+				setState(61);
 				match(BOOL);
-				setState(63);
+				setState(62);
 				match(WHITESPACE);
-				setState(64);
+				setState(63);
 				match(VARIABLE);
-				setState(65);
+				setState(64);
 				match(SEMICOLON);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(66);
+				setState(65);
 				match(BOOL);
-				setState(67);
+				setState(66);
 				match(WHITESPACE);
-				setState(68);
+				setState(67);
 				match(VARIABLE);
-				setState(69);
+				setState(68);
 				match(EQUAL);
-				setState(70);
+				setState(69);
 				match(BOOLVALUE);
-				setState(71);
+				setState(70);
 				match(SEMICOLON);
 				}
 				break;
@@ -332,11 +321,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_writeStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterWriteStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterWriteStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitWriteStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitWriteStatement(this);
 		}
 	}
 
@@ -346,13 +335,13 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(73);
 			match(WRITE);
-			setState(75);
+			setState(74);
 			match(WHITESPACE);
-			setState(76);
+			setState(75);
 			match(WORD);
-			setState(77);
+			setState(76);
 			match(SEMICOLON);
 			}
 		}
@@ -381,11 +370,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statements; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterStatements(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterStatements(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitStatements(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitStatements(this);
 		}
 	}
 
@@ -393,26 +382,26 @@ public class BSharpParser extends Parser {
 		StatementsContext _localctx = new StatementsContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_statements);
 		try {
-			setState(86);
+			setState(85);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(79);
+				setState(78);
 				singleStatement();
-				setState(80);
+				setState(79);
 				match(NEWLINE);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(82);
+				setState(81);
 				singleStatement();
-				setState(83);
+				setState(82);
 				match(NEWLINE);
-				setState(84);
+				setState(83);
 				statements();
 				}
 				break;
@@ -452,11 +441,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_singleStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterSingleStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterSingleStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitSingleStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitSingleStatement(this);
 		}
 	}
 
@@ -464,45 +453,45 @@ public class BSharpParser extends Parser {
 		SingleStatementContext _localctx = new SingleStatementContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_singleStatement);
 		try {
-			setState(97);
+			setState(96);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(88);
+				setState(87);
 				assignmentStatement();
-				setState(89);
+				setState(88);
 				match(SEMICOLON);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(91);
+				setState(90);
 				boolAssignment();
-				setState(92);
+				setState(91);
 				match(SEMICOLON);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(94);
+				setState(93);
 				conditionalStatement();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(95);
+				setState(94);
 				whileStatement();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(96);
+				setState(95);
 				writeStatement();
 				}
 				break;
@@ -539,11 +528,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_assignmentStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterAssignmentStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterAssignmentStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitAssignmentStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitAssignmentStatement(this);
 		}
 	}
 
@@ -551,99 +540,99 @@ public class BSharpParser extends Parser {
 		AssignmentStatementContext _localctx = new AssignmentStatementContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_assignmentStatement);
 		try {
-			setState(128);
+			setState(127);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(99);
+				setState(98);
 				match(VARIABLE);
-				setState(100);
+				setState(99);
 				match(EQUAL);
-				setState(101);
+				setState(100);
 				match(DOUBLEVALUE);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(102);
+				setState(101);
 				match(VARIABLE);
-				setState(103);
+				setState(102);
 				match(EQUAL);
-				setState(104);
+				setState(103);
 				match(BOOLVALUE);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(105);
+				setState(104);
 				match(DOUBLE);
-				setState(106);
+				setState(105);
 				match(WHITESPACE);
-				setState(107);
+				setState(106);
 				match(VARIABLE);
-				setState(108);
+				setState(107);
 				match(EQUAL);
-				setState(109);
+				setState(108);
 				match(DOUBLEVALUE);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(110);
+				setState(109);
 				match(BOOL);
-				setState(111);
+				setState(110);
 				match(WHITESPACE);
-				setState(112);
+				setState(111);
 				match(VARIABLE);
-				setState(113);
+				setState(112);
 				match(EQUAL);
-				setState(114);
+				setState(113);
 				match(BOOLVALUE);
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(115);
+				setState(114);
 				match(DOUBLE);
-				setState(116);
+				setState(115);
 				match(WHITESPACE);
-				setState(117);
+				setState(116);
 				match(VARIABLE);
-				setState(118);
+				setState(117);
 				match(EQUAL);
-				setState(119);
+				setState(118);
 				arithmeticExpression(0);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(120);
+				setState(119);
 				match(BOOL);
-				setState(121);
+				setState(120);
 				match(WHITESPACE);
-				setState(122);
+				setState(121);
 				match(VARIABLE);
-				setState(123);
+				setState(122);
 				match(EQUAL);
-				setState(124);
+				setState(123);
 				booleanExpression();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(125);
+				setState(124);
 				match(VARIABLE);
-				setState(126);
+				setState(125);
 				match(EQUAL);
-				setState(127);
+				setState(126);
 				arithmeticExpression(0);
 				}
 				break;
@@ -672,11 +661,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_boolAssignment; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterBoolAssignment(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterBoolAssignment(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitBoolAssignment(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitBoolAssignment(this);
 		}
 	}
 
@@ -684,32 +673,32 @@ public class BSharpParser extends Parser {
 		BoolAssignmentContext _localctx = new BoolAssignmentContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_boolAssignment);
 		try {
-			setState(138);
+			setState(137);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case VARIABLE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(130);
+				setState(129);
 				match(VARIABLE);
-				setState(131);
+				setState(130);
 				match(EQUAL);
-				setState(132);
+				setState(131);
 				match(BOOLVALUE);
 				}
 				break;
 			case BOOL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(133);
+				setState(132);
 				match(BOOL);
-				setState(134);
+				setState(133);
 				match(WHITESPACE);
-				setState(135);
+				setState(134);
 				match(VARIABLE);
-				setState(136);
+				setState(135);
 				match(EQUAL);
-				setState(137);
+				setState(136);
 				match(BOOLVALUE);
 				}
 				break;
@@ -746,11 +735,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_conditionalStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterConditionalStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterConditionalStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitConditionalStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitConditionalStatement(this);
 		}
 	}
 
@@ -761,24 +750,24 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(140);
+			setState(139);
 			match(IF);
-			setState(141);
+			setState(140);
 			match(T__2);
-			setState(142);
+			setState(141);
 			booleanExpression();
-			setState(143);
+			setState(142);
 			match(T__3);
-			setState(144);
+			setState(143);
 			blockOfStatements();
-			setState(147);
+			setState(146);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==ELSE) {
 				{
-				setState(145);
+				setState(144);
 				match(ELSE);
-				setState(146);
+				setState(145);
 				blockOfStatements();
 				}
 			}
@@ -806,11 +795,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_blockOfStatements; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterBlockOfStatements(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterBlockOfStatements(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitBlockOfStatements(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitBlockOfStatements(this);
 		}
 	}
 
@@ -820,11 +809,11 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(149);
+			setState(148);
 			match(T__4);
-			setState(150);
+			setState(149);
 			statements();
-			setState(151);
+			setState(150);
 			match(T__5);
 			}
 		}
@@ -853,11 +842,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_whileStatement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterWhileStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterWhileStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitWhileStatement(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitWhileStatement(this);
 		}
 	}
 
@@ -867,15 +856,15 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(153);
+			setState(152);
 			match(WHILE);
-			setState(154);
+			setState(153);
 			match(T__2);
-			setState(155);
+			setState(154);
 			booleanExpression();
-			setState(156);
+			setState(155);
 			match(T__3);
-			setState(157);
+			setState(156);
 			blockOfStatements();
 			}
 		}
@@ -903,11 +892,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_booleanExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterBooleanExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterBooleanExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitBooleanExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitBooleanExpression(this);
 		}
 	}
 
@@ -915,20 +904,20 @@ public class BSharpParser extends Parser {
 		BooleanExpressionContext _localctx = new BooleanExpressionContext(_ctx, getState());
 		enterRule(_localctx, 22, RULE_booleanExpression);
 		try {
-			setState(161);
+			setState(160);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(159);
+				setState(158);
 				relationalExpression(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(160);
+				setState(159);
 				logicalExpression(0);
 				}
 				break;
@@ -966,11 +955,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_logicalExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterLogicalExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterLogicalExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitLogicalExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitLogicalExpression(this);
 		}
 	}
 
@@ -989,33 +978,33 @@ public class BSharpParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(167);
+			setState(166);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				{
-				setState(164);
+				setState(163);
 				arithmeticExpression(0);
 				}
 				break;
 			case 2:
 				{
-				setState(165);
+				setState(164);
 				match(VARIABLE);
 				}
 				break;
 			case 3:
 				{
-				setState(166);
+				setState(165);
 				match(BOOLVALUE);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(175);
+			setState(174);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1023,16 +1012,16 @@ public class BSharpParser extends Parser {
 					{
 					_localctx = new LogicalExpressionContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_logicalExpression);
-					setState(169);
+					setState(168);
 					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-					setState(170);
+					setState(169);
 					logicalOperator();
-					setState(171);
+					setState(170);
 					logicalExpression(4);
 					}
-					}
+					} 
 				}
-				setState(177);
+				setState(176);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
 			}
@@ -1070,11 +1059,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_relationalExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterRelationalExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterRelationalExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitRelationalExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitRelationalExpression(this);
 		}
 	}
 
@@ -1093,33 +1082,33 @@ public class BSharpParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(182);
+			setState(181);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				{
-				setState(179);
+				setState(178);
 				arithmeticExpression(0);
 				}
 				break;
 			case 2:
 				{
-				setState(180);
+				setState(179);
 				match(VARIABLE);
 				}
 				break;
 			case 3:
 				{
-				setState(181);
+				setState(180);
 				match(DOUBLEVALUE);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(190);
+			setState(189);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1127,16 +1116,16 @@ public class BSharpParser extends Parser {
 					{
 					_localctx = new RelationalExpressionContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_relationalExpression);
-					setState(184);
+					setState(183);
 					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-					setState(185);
+					setState(184);
 					relationalOperator();
-					setState(186);
+					setState(185);
 					relationalExpression(4);
 					}
-					}
+					} 
 				}
-				setState(192);
+				setState(191);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			}
@@ -1171,11 +1160,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_arithmeticExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterArithmeticExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterArithmeticExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitArithmeticExpression(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitArithmeticExpression(this);
 		}
 	}
 
@@ -1194,28 +1183,28 @@ public class BSharpParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(200);
+			setState(199);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__2:
 				{
-				setState(194);
+				setState(193);
 				match(T__2);
-				setState(195);
+				setState(194);
 				arithmeticExpression(0);
-				setState(196);
+				setState(195);
 				match(T__3);
 				}
 				break;
 			case VARIABLE:
 				{
-				setState(198);
+				setState(197);
 				match(VARIABLE);
 				}
 				break;
 			case DOUBLEVALUE:
 				{
-				setState(199);
+				setState(198);
 				match(DOUBLEVALUE);
 				}
 				break;
@@ -1223,10 +1212,10 @@ public class BSharpParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(208);
+			setState(207);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1234,16 +1223,16 @@ public class BSharpParser extends Parser {
 					{
 					_localctx = new ArithmeticExpressionContext(_parentctx, _parentState);
 					pushNewRecursionContext(_localctx, _startState, RULE_arithmeticExpression);
-					setState(202);
+					setState(201);
 					if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-					setState(203);
+					setState(202);
 					arithmeticOperator();
-					setState(204);
+					setState(203);
 					arithmeticExpression(5);
 					}
-					}
+					} 
 				}
-				setState(210);
+				setState(209);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
 			}
@@ -1267,11 +1256,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_relationalOperator; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterRelationalOperator(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterRelationalOperator(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitRelationalOperator(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitRelationalOperator(this);
 		}
 	}
 
@@ -1282,7 +1271,7 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(211);
+			setState(210);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__6) | (1L << T__7) | (1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1312,11 +1301,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_logicalOperator; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterLogicalOperator(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterLogicalOperator(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitLogicalOperator(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitLogicalOperator(this);
 		}
 	}
 
@@ -1327,7 +1316,7 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(213);
+			setState(212);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__12) | (1L << T__13) | (1L << T__14))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1357,11 +1346,11 @@ public class BSharpParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_arithmeticOperator; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).enterArithmeticOperator(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).enterArithmeticOperator(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof BSharpListener) ((BSharpListener)listener).exitArithmeticOperator(this);
+			if ( listener instanceof BSharpListener ) ((BSharpListener)listener).exitArithmeticOperator(this);
 		}
 	}
 
@@ -1372,7 +1361,7 @@ public class BSharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(215);
+			setState(214);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1429,75 +1418,74 @@ public class BSharpParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u00dc\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u00db\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\3\2\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\7\3\60\n\3\f\3\16\3\63"+
-		"\13\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\3\4\5\4K\n\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6"+
-		"\3\6\3\6\3\6\5\6Y\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7d\n\7\3\b"+
+		"\4\23\t\23\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\7\3/\n\3\f\3\16\3\62\13\3\3"+
+		"\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\3\4\3\4\5\4J\n\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6"+
+		"\3\6\5\6X\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7c\n\7\3\b\3\b\3\b"+
 		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3"+
-		"\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b\u0083\n\b\3\t\3\t\3\t\3"+
-		"\t\3\t\3\t\3\t\3\t\5\t\u008d\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\n\u0096"+
-		"\n\n\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\r\3\r\5\r\u00a4\n\r"+
-		"\3\16\3\16\3\16\3\16\5\16\u00aa\n\16\3\16\3\16\3\16\3\16\7\16\u00b0\n"+
-		"\16\f\16\16\16\u00b3\13\16\3\17\3\17\3\17\3\17\5\17\u00b9\n\17\3\17\3"+
-		"\17\3\17\3\17\7\17\u00bf\n\17\f\17\16\17\u00c2\13\17\3\20\3\20\3\20\3"+
-		"\20\3\20\3\20\3\20\5\20\u00cb\n\20\3\20\3\20\3\20\3\20\7\20\u00d1\n\20"+
-		"\f\20\16\20\u00d4\13\20\3\21\3\21\3\22\3\22\3\23\3\23\3\23\2\5\32\34\36"+
-		"\24\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$\2\5\3\2\t\16\3\2\17\21"+
-		"\3\2\22\25\2\u00e4\2&\3\2\2\2\4\61\3\2\2\2\6J\3\2\2\2\bL\3\2\2\2\nX\3"+
-		"\2\2\2\fc\3\2\2\2\16\u0082\3\2\2\2\20\u008c\3\2\2\2\22\u008e\3\2\2\2\24"+
-		"\u0097\3\2\2\2\26\u009b\3\2\2\2\30\u00a3\3\2\2\2\32\u00a9\3\2\2\2\34\u00b8"+
-		"\3\2\2\2\36\u00ca\3\2\2\2 \u00d5\3\2\2\2\"\u00d7\3\2\2\2$\u00d9\3\2\2"+
-		"\2&\'\7\3\2\2\'(\7#\2\2()\5\4\3\2)*\7#\2\2*+\7\4\2\2+\3\3\2\2\2,-\5\6"+
-		"\4\2-.\7#\2\2.\60\3\2\2\2/,\3\2\2\2\60\63\3\2\2\2\61/\3\2\2\2\61\62\3"+
-		"\2\2\2\62\64\3\2\2\2\63\61\3\2\2\2\64\65\5\n\6\2\65\5\3\2\2\2\66\67\7"+
-		"\33\2\2\678\7\26\2\289\7\"\2\29K\7\35\2\2:;\7\33\2\2;<\7\26\2\2<=\7\""+
-		"\2\2=>\7\36\2\2>?\7\31\2\2?K\7\35\2\2@A\7\34\2\2AB\7\26\2\2BC\7\"\2\2"+
-		"CK\7\35\2\2DE\7\34\2\2EF\7\26\2\2FG\7\"\2\2GH\7\36\2\2HI\7\32\2\2IK\7"+
-		"\35\2\2J\66\3\2\2\2J:\3\2\2\2J@\3\2\2\2JD\3\2\2\2K\7\3\2\2\2LM\7\30\2"+
-		"\2MN\7\26\2\2NO\7\27\2\2OP\7\35\2\2P\t\3\2\2\2QR\5\f\7\2RS\7#\2\2SY\3"+
-		"\2\2\2TU\5\f\7\2UV\7#\2\2VW\5\n\6\2WY\3\2\2\2XQ\3\2\2\2XT\3\2\2\2Y\13"+
-		"\3\2\2\2Z[\5\16\b\2[\\\7\35\2\2\\d\3\2\2\2]^\5\20\t\2^_\7\35\2\2_d\3\2"+
-		"\2\2`d\5\22\n\2ad\5\26\f\2bd\5\b\5\2cZ\3\2\2\2c]\3\2\2\2c`\3\2\2\2ca\3"+
-		"\2\2\2cb\3\2\2\2d\r\3\2\2\2ef\7\"\2\2fg\7\36\2\2g\u0083\7\31\2\2hi\7\""+
-		"\2\2ij\7\36\2\2j\u0083\7\32\2\2kl\7\33\2\2lm\7\26\2\2mn\7\"\2\2no\7\36"+
-		"\2\2o\u0083\7\31\2\2pq\7\34\2\2qr\7\26\2\2rs\7\"\2\2st\7\36\2\2t\u0083"+
-		"\7\32\2\2uv\7\33\2\2vw\7\26\2\2wx\7\"\2\2xy\7\36\2\2y\u0083\5\36\20\2"+
-		"z{\7\34\2\2{|\7\26\2\2|}\7\"\2\2}~\7\36\2\2~\u0083\5\30\r\2\177\u0080"+
-		"\7\"\2\2\u0080\u0081\7\36\2\2\u0081\u0083\5\36\20\2\u0082e\3\2\2\2\u0082"+
-		"h\3\2\2\2\u0082k\3\2\2\2\u0082p\3\2\2\2\u0082u\3\2\2\2\u0082z\3\2\2\2"+
-		"\u0082\177\3\2\2\2\u0083\17\3\2\2\2\u0084\u0085\7\"\2\2\u0085\u0086\7"+
-		"\36\2\2\u0086\u008d\7\32\2\2\u0087\u0088\7\34\2\2\u0088\u0089\7\26\2\2"+
-		"\u0089\u008a\7\"\2\2\u008a\u008b\7\36\2\2\u008b\u008d\7\32\2\2\u008c\u0084"+
-		"\3\2\2\2\u008c\u0087\3\2\2\2\u008d\21\3\2\2\2\u008e\u008f\7\37\2\2\u008f"+
-		"\u0090\7\5\2\2\u0090\u0091\5\30\r\2\u0091\u0092\7\6\2\2\u0092\u0095\5"+
-		"\24\13\2\u0093\u0094\7 \2\2\u0094\u0096\5\24\13\2\u0095\u0093\3\2\2\2"+
-		"\u0095\u0096\3\2\2\2\u0096\23\3\2\2\2\u0097\u0098\7\7\2\2\u0098\u0099"+
-		"\5\n\6\2\u0099\u009a\7\b\2\2\u009a\25\3\2\2\2\u009b\u009c\7!\2\2\u009c"+
-		"\u009d\7\5\2\2\u009d\u009e\5\30\r\2\u009e\u009f\7\6\2\2\u009f\u00a0\5"+
-		"\24\13\2\u00a0\27\3\2\2\2\u00a1\u00a4\5\34\17\2\u00a2\u00a4\5\32\16\2"+
-		"\u00a3\u00a1\3\2\2\2\u00a3\u00a2\3\2\2\2\u00a4\31\3\2\2\2\u00a5\u00a6"+
-		"\b\16\1\2\u00a6\u00aa\5\36\20\2\u00a7\u00aa\7\"\2\2\u00a8\u00aa\7\32\2"+
-		"\2\u00a9\u00a5\3\2\2\2\u00a9\u00a7\3\2\2\2\u00a9\u00a8\3\2\2\2\u00aa\u00b1"+
-		"\3\2\2\2\u00ab\u00ac\f\5\2\2\u00ac\u00ad\5\"\22\2\u00ad\u00ae\5\32\16"+
-		"\6\u00ae\u00b0\3\2\2\2\u00af\u00ab\3\2\2\2\u00b0\u00b3\3\2\2\2\u00b1\u00af"+
-		"\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\33\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b4"+
-		"\u00b5\b\17\1\2\u00b5\u00b9\5\36\20\2\u00b6\u00b9\7\"\2\2\u00b7\u00b9"+
-		"\7\31\2\2\u00b8\u00b4\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b8\u00b7\3\2\2\2"+
-		"\u00b9\u00c0\3\2\2\2\u00ba\u00bb\f\5\2\2\u00bb\u00bc\5 \21\2\u00bc\u00bd"+
-		"\5\34\17\6\u00bd\u00bf\3\2\2\2\u00be\u00ba\3\2\2\2\u00bf\u00c2\3\2\2\2"+
-		"\u00c0\u00be\3\2\2\2\u00c0\u00c1\3\2\2\2\u00c1\35\3\2\2\2\u00c2\u00c0"+
-		"\3\2\2\2\u00c3\u00c4\b\20\1\2\u00c4\u00c5\7\5\2\2\u00c5\u00c6\5\36\20"+
-		"\2\u00c6\u00c7\7\6\2\2\u00c7\u00cb\3\2\2\2\u00c8\u00cb\7\"\2\2\u00c9\u00cb"+
-		"\7\31\2\2\u00ca\u00c3\3\2\2\2\u00ca\u00c8\3\2\2\2\u00ca\u00c9\3\2\2\2"+
-		"\u00cb\u00d2\3\2\2\2\u00cc\u00cd\f\6\2\2\u00cd\u00ce\5$\23\2\u00ce\u00cf"+
-		"\5\36\20\7\u00cf\u00d1\3\2\2\2\u00d0\u00cc\3\2\2\2\u00d1\u00d4\3\2\2\2"+
-		"\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\37\3\2\2\2\u00d4\u00d2"+
-		"\3\2\2\2\u00d5\u00d6\t\2\2\2\u00d6!\3\2\2\2\u00d7\u00d8\t\3\2\2\u00d8"+
-		"#\3\2\2\2\u00d9\u00da\t\4\2\2\u00da%\3\2\2\2\20\61JXc\u0082\u008c\u0095"+
-		"\u00a3\u00a9\u00b1\u00b8\u00c0\u00ca\u00d2";
+		"\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b\u0082\n\b\3\t\3\t\3\t\3\t\3\t\3"+
+		"\t\3\t\3\t\5\t\u008c\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\n\u0095\n\n\3\13"+
+		"\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\r\3\r\5\r\u00a3\n\r\3\16\3\16"+
+		"\3\16\3\16\5\16\u00a9\n\16\3\16\3\16\3\16\3\16\7\16\u00af\n\16\f\16\16"+
+		"\16\u00b2\13\16\3\17\3\17\3\17\3\17\5\17\u00b8\n\17\3\17\3\17\3\17\3\17"+
+		"\7\17\u00be\n\17\f\17\16\17\u00c1\13\17\3\20\3\20\3\20\3\20\3\20\3\20"+
+		"\3\20\5\20\u00ca\n\20\3\20\3\20\3\20\3\20\7\20\u00d0\n\20\f\20\16\20\u00d3"+
+		"\13\20\3\21\3\21\3\22\3\22\3\23\3\23\3\23\2\5\32\34\36\24\2\4\6\b\n\f"+
+		"\16\20\22\24\26\30\32\34\36 \"$\2\5\3\2\t\16\3\2\17\21\3\2\22\25\2\u00e3"+
+		"\2&\3\2\2\2\4\60\3\2\2\2\6I\3\2\2\2\bK\3\2\2\2\nW\3\2\2\2\fb\3\2\2\2\16"+
+		"\u0081\3\2\2\2\20\u008b\3\2\2\2\22\u008d\3\2\2\2\24\u0096\3\2\2\2\26\u009a"+
+		"\3\2\2\2\30\u00a2\3\2\2\2\32\u00a8\3\2\2\2\34\u00b7\3\2\2\2\36\u00c9\3"+
+		"\2\2\2 \u00d4\3\2\2\2\"\u00d6\3\2\2\2$\u00d8\3\2\2\2&\'\7\3\2\2\'(\7#"+
+		"\2\2()\5\4\3\2)*\7\4\2\2*\3\3\2\2\2+,\5\6\4\2,-\7#\2\2-/\3\2\2\2.+\3\2"+
+		"\2\2/\62\3\2\2\2\60.\3\2\2\2\60\61\3\2\2\2\61\63\3\2\2\2\62\60\3\2\2\2"+
+		"\63\64\5\n\6\2\64\5\3\2\2\2\65\66\7\33\2\2\66\67\7\26\2\2\678\7\"\2\2"+
+		"8J\7\35\2\29:\7\33\2\2:;\7\26\2\2;<\7\"\2\2<=\7\36\2\2=>\7\31\2\2>J\7"+
+		"\35\2\2?@\7\34\2\2@A\7\26\2\2AB\7\"\2\2BJ\7\35\2\2CD\7\34\2\2DE\7\26\2"+
+		"\2EF\7\"\2\2FG\7\36\2\2GH\7\32\2\2HJ\7\35\2\2I\65\3\2\2\2I9\3\2\2\2I?"+
+		"\3\2\2\2IC\3\2\2\2J\7\3\2\2\2KL\7\30\2\2LM\7\26\2\2MN\7\27\2\2NO\7\35"+
+		"\2\2O\t\3\2\2\2PQ\5\f\7\2QR\7#\2\2RX\3\2\2\2ST\5\f\7\2TU\7#\2\2UV\5\n"+
+		"\6\2VX\3\2\2\2WP\3\2\2\2WS\3\2\2\2X\13\3\2\2\2YZ\5\16\b\2Z[\7\35\2\2["+
+		"c\3\2\2\2\\]\5\20\t\2]^\7\35\2\2^c\3\2\2\2_c\5\22\n\2`c\5\26\f\2ac\5\b"+
+		"\5\2bY\3\2\2\2b\\\3\2\2\2b_\3\2\2\2b`\3\2\2\2ba\3\2\2\2c\r\3\2\2\2de\7"+
+		"\"\2\2ef\7\36\2\2f\u0082\7\31\2\2gh\7\"\2\2hi\7\36\2\2i\u0082\7\32\2\2"+
+		"jk\7\33\2\2kl\7\26\2\2lm\7\"\2\2mn\7\36\2\2n\u0082\7\31\2\2op\7\34\2\2"+
+		"pq\7\26\2\2qr\7\"\2\2rs\7\36\2\2s\u0082\7\32\2\2tu\7\33\2\2uv\7\26\2\2"+
+		"vw\7\"\2\2wx\7\36\2\2x\u0082\5\36\20\2yz\7\34\2\2z{\7\26\2\2{|\7\"\2\2"+
+		"|}\7\36\2\2}\u0082\5\30\r\2~\177\7\"\2\2\177\u0080\7\36\2\2\u0080\u0082"+
+		"\5\36\20\2\u0081d\3\2\2\2\u0081g\3\2\2\2\u0081j\3\2\2\2\u0081o\3\2\2\2"+
+		"\u0081t\3\2\2\2\u0081y\3\2\2\2\u0081~\3\2\2\2\u0082\17\3\2\2\2\u0083\u0084"+
+		"\7\"\2\2\u0084\u0085\7\36\2\2\u0085\u008c\7\32\2\2\u0086\u0087\7\34\2"+
+		"\2\u0087\u0088\7\26\2\2\u0088\u0089\7\"\2\2\u0089\u008a\7\36\2\2\u008a"+
+		"\u008c\7\32\2\2\u008b\u0083\3\2\2\2\u008b\u0086\3\2\2\2\u008c\21\3\2\2"+
+		"\2\u008d\u008e\7\37\2\2\u008e\u008f\7\5\2\2\u008f\u0090\5\30\r\2\u0090"+
+		"\u0091\7\6\2\2\u0091\u0094\5\24\13\2\u0092\u0093\7 \2\2\u0093\u0095\5"+
+		"\24\13\2\u0094\u0092\3\2\2\2\u0094\u0095\3\2\2\2\u0095\23\3\2\2\2\u0096"+
+		"\u0097\7\7\2\2\u0097\u0098\5\n\6\2\u0098\u0099\7\b\2\2\u0099\25\3\2\2"+
+		"\2\u009a\u009b\7!\2\2\u009b\u009c\7\5\2\2\u009c\u009d\5\30\r\2\u009d\u009e"+
+		"\7\6\2\2\u009e\u009f\5\24\13\2\u009f\27\3\2\2\2\u00a0\u00a3\5\34\17\2"+
+		"\u00a1\u00a3\5\32\16\2\u00a2\u00a0\3\2\2\2\u00a2\u00a1\3\2\2\2\u00a3\31"+
+		"\3\2\2\2\u00a4\u00a5\b\16\1\2\u00a5\u00a9\5\36\20\2\u00a6\u00a9\7\"\2"+
+		"\2\u00a7\u00a9\7\32\2\2\u00a8\u00a4\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a8"+
+		"\u00a7\3\2\2\2\u00a9\u00b0\3\2\2\2\u00aa\u00ab\f\5\2\2\u00ab\u00ac\5\""+
+		"\22\2\u00ac\u00ad\5\32\16\6\u00ad\u00af\3\2\2\2\u00ae\u00aa\3\2\2\2\u00af"+
+		"\u00b2\3\2\2\2\u00b0\u00ae\3\2\2\2\u00b0\u00b1\3\2\2\2\u00b1\33\3\2\2"+
+		"\2\u00b2\u00b0\3\2\2\2\u00b3\u00b4\b\17\1\2\u00b4\u00b8\5\36\20\2\u00b5"+
+		"\u00b8\7\"\2\2\u00b6\u00b8\7\31\2\2\u00b7\u00b3\3\2\2\2\u00b7\u00b5\3"+
+		"\2\2\2\u00b7\u00b6\3\2\2\2\u00b8\u00bf\3\2\2\2\u00b9\u00ba\f\5\2\2\u00ba"+
+		"\u00bb\5 \21\2\u00bb\u00bc\5\34\17\6\u00bc\u00be\3\2\2\2\u00bd\u00b9\3"+
+		"\2\2\2\u00be\u00c1\3\2\2\2\u00bf\u00bd\3\2\2\2\u00bf\u00c0\3\2\2\2\u00c0"+
+		"\35\3\2\2\2\u00c1\u00bf\3\2\2\2\u00c2\u00c3\b\20\1\2\u00c3\u00c4\7\5\2"+
+		"\2\u00c4\u00c5\5\36\20\2\u00c5\u00c6\7\6\2\2\u00c6\u00ca\3\2\2\2\u00c7"+
+		"\u00ca\7\"\2\2\u00c8\u00ca\7\31\2\2\u00c9\u00c2\3\2\2\2\u00c9\u00c7\3"+
+		"\2\2\2\u00c9\u00c8\3\2\2\2\u00ca\u00d1\3\2\2\2\u00cb\u00cc\f\6\2\2\u00cc"+
+		"\u00cd\5$\23\2\u00cd\u00ce\5\36\20\7\u00ce\u00d0\3\2\2\2\u00cf\u00cb\3"+
+		"\2\2\2\u00d0\u00d3\3\2\2\2\u00d1\u00cf\3\2\2\2\u00d1\u00d2\3\2\2\2\u00d2"+
+		"\37\3\2\2\2\u00d3\u00d1\3\2\2\2\u00d4\u00d5\t\2\2\2\u00d5!\3\2\2\2\u00d6"+
+		"\u00d7\t\3\2\2\u00d7#\3\2\2\2\u00d8\u00d9\t\4\2\2\u00d9%\3\2\2\2\20\60"+
+		"IWb\u0081\u008b\u0094\u00a2\u00a8\u00b0\u00b7\u00bf\u00c9\u00d1";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
