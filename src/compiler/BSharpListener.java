@@ -125,9 +125,9 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
     @Override
-    public void enterLogicalExpression(BSharpParser.LogicalExpressionContext ctx)
-    {
+    public void enterLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
         super.enterLogicalExpression(ctx);
+    }
 
 
     }
@@ -151,8 +151,8 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.enterLogicalOperator(ctx);
-        intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
-        if (ctx.children.get(0).getText().equals("&&")){
+        intermediateCode.add("LOGICAL_OP_COMPARE" + " " + ctx.children.get(0));
+        if (ctx.children.get(0).equals("&&")){
             intermediateCode.add("AND_CHECK");
         }
         else if (ctx.children.get(0).getText().equals("||")){
@@ -166,7 +166,7 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.exitLogicalOperator(ctx);
-        intermediateCode.add("EXIT OP");
+        intermediateCode.add("EXIT LOG_OP");
     }
 
     @Override
@@ -200,13 +200,31 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
         super.enterRelationalOperator(ctx);
-        intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
+        intermediateCode.add("RELATIONAL_OP_COMPARE" + " " + ctx.children.get(0));
+        if (ctx.children.get(0).equals(">")){
+            intermediateCode.add("GREATER_THAN_CHECK");
+        }
+        else if (ctx.children.get(0).equals("<")){
+            intermediateCode.add("LESS_THAN_CHECK");
+        }
+        else if (ctx.children.get(0).equals(">=")){
+            intermediateCode.add("GREATER_THAN_EQUAL_CHECK");
+        }
+        else if (ctx.children.get(0).equals("<=")){
+            intermediateCode.add("LESSER_THAN_EQUAL_CHECK_CHECK");
+        }
+        else if (ctx.children.get(0).equals("==")){
+            intermediateCode.add("EQUAL_TO_CHECK");
+        }
+        else if (ctx.children.get(0).equals("!=")){
+            intermediateCode.add("NOT_EQUAL_CHECK");
+        }
     }
 
     @Override
     public void exitRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
         super.exitRelationalOperator(ctx);
-        intermediateCode.add("EXIT OP");
+        intermediateCode.add("EXIT REL_OP");
     }
 
     @Override
@@ -224,13 +242,13 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.enterRelationalExpression(ctx);
-        intermediateCode.add("ENTER REL" + " " + ctx.children.get(1));
+        intermediateCode.add("ENTER REL EX" + " " + ctx.children.get(0));
     }
 
 
     @Override
     public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.exitRelationalExpression(ctx);
-        intermediateCode.add("EXIT REL");
+        intermediateCode.add("EXIT REL EX");
     }
 }
