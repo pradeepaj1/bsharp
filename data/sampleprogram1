@@ -1,8 +1,9 @@
 start
 bool c=False;
-double d;
+double b=5.0;
+double a=2.0;
 bool e;
 e=False;
-d=10.0;
+d=a+b;
 write "Hello";
 end

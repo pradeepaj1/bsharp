@@ -1,8 +1,6 @@
 package compiler;
 
 
-import main.antlr4.generatecode.BSharpBaseListener;
-import main.antlr4.generatecode.BSharpParser;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -62,8 +60,6 @@ public class BSharpListener extends BSharpBaseListener {
         super.enterAssignmentStatement(ctx);
         if(ctx.children.size() == 3)
         {
-
-
             if (ctx.children.get(2) instanceof BSharpParser.ArithmeticExpressionContext){
                 intermediateCode.add("MOV ACC " + ctx.children.get(2).getChild(0));
                 intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
@@ -103,23 +99,43 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
     @Override
+    public void exitBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
+        super.exitBoolAssignment(ctx);
+    }
+
+    @Override
     public void enterArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx)
     {
         super.enterArithmeticExpression(ctx);
 
-        if (ctx.children.size() == 1) {
-            return;
+        if(ctx.children.size()==1)
+        {
+            intermediateCode.add("MOV ACC " +ctx.children.get(0));
+        }
         }
 
-    }
     @Override
-    public void exitBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
-        super.exitBoolAssignment(ctx);
+    public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
+        if (ctx.children.size() == 3) {
+            if (ctx.children.get(0) instanceof BSharpParser.ArithmeticExpressionContext) {
+                intermediateCode.add("ADD ACC " + ctx.children.get(0) + " " + ctx.children.get(2));
+            }
+            super.exitArithmeticExpression(ctx);
+        }
     }
+
     @Override
     public void enterLogicalExpression(BSharpParser.LogicalExpressionContext ctx)
     {
         super.enterLogicalExpression(ctx);
+
+
+    }
+    @Override
+    public void exitLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
+        super.exitLogicalExpression(ctx);
+    }
+
 
     public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.enterConditionalStatement(ctx);
@@ -136,13 +152,13 @@ public class BSharpListener extends BSharpBaseListener {
     public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.enterLogicalOperator(ctx);
         intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
-        if (ctx.children.get(0).equals("&&")){
+        if (ctx.children.get(0).getText().equals("&&")){
             intermediateCode.add("AND_CHECK");
         }
-        else if (ctx.children.get(0).equals("||")){
+        else if (ctx.children.get(0).getText().equals("||")){
             intermediateCode.add("OR_CHECK");
         }
-        else if (ctx.children.get(0).equals("!")){
+        else if (ctx.children.get(0).getText().equals("!")){
             intermediateCode.add("NEGATION_CHECK");
         }
     }
@@ -151,6 +167,34 @@ public class BSharpListener extends BSharpBaseListener {
     public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.exitLogicalOperator(ctx);
         intermediateCode.add("EXIT OP");
+    }
+
+    @Override
+    public void enterArithmeticOperator(BSharpParser.ArithmeticOperatorContext ctx)
+    {
+        super.enterArithmeticOperator(ctx);
+
+        if(ctx.children.get(0).getText().equals("+"))
+        {
+            intermediateCode.add("OP "+ctx.children.get(0));
+        }
+        else if(ctx.children.get(0).getText().equals("-"))
+        {
+            intermediateCode.add("OP "+ctx.children.get(0));
+        }
+        else if(ctx.children.get(0).getText().equals("*"))
+        {
+            intermediateCode.add("OP "+ctx.children.get(0));
+        }
+        else if(ctx.children.get(0).getText().equals("/"))
+        {
+            intermediateCode.add("OP "+ctx.children.get(0));
+        }
+    }
+    @Override
+    public void exitArithmeticOperator(BSharpParser.ArithmeticOperatorContext ctx)
+    {
+        super.exitArithmeticOperator(ctx);
     }
 
     @Override

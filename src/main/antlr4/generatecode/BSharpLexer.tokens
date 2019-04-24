@@ -30,6 +30,7 @@ IF=29
 ELSE=30
 WHILE=31
 VARIABLE=32
+NEWLINE=33
 'start'=1
 'end'=2
 '('=3

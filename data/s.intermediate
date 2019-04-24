@@ -1,0 +1,19 @@
+TYPE bool c
+MOV ACC False
+MOV c ACC
+TYPE double b
+MOV ACC 5.0
+MOV b ACC
+TYPE double a
+MOV ACC 2.0
+MOV a ACC
+TYPE bool e
+MOV ACC False
+MOV e ACC
+MOV ACC [28 105 81 76 77 46 37]
+MOV d ACC
+MOV ACC a
+OP +
+MOV ACC b
+ADD ACC [28 105 81 76 77 46 37] [181 105 81 76 77 46 37]
+WRITE "Hello"
