@@ -1,6 +1,8 @@
 package compiler;
 
 
+import main.antlr4.generatecode.BSharpBaseListener;
+import main.antlr4.generatecode.BSharpParser;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -126,11 +128,12 @@ public class BSharpListener extends BSharpBaseListener {
 
     @Override
     public void enterLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
+
         super.enterLogicalExpression(ctx);
     }
 
 
-    }
+
     @Override
     public void exitLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
         super.exitLogicalExpression(ctx);
