@@ -58,7 +58,6 @@ relationalExpression				: arithmeticExpression
 
 arithmeticExpression				: left=arithmeticExpression op=('*' | '/' ) right=arithmeticExpression
                                     | left=arithmeticExpression op=('+' | '-' ) right=arithmeticExpression
-                                    | '(' arithmeticExpression ')'
                                     | VARIABLE
                                     | DOUBLEVALUE;
 

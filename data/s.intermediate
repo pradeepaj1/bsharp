@@ -7,13 +7,16 @@ MOV two ACC
 TYPE double three
 MOV ACC -15.0
 MOV three ACC
-MUL ACC two three
-ADD ACC one ACC
-MOV three ACC
-WRITE "ans_is"
 ADD ACC one two
-MUL ACC two three
-ADD ACC ACC ACC
-MOV f ACC
+MOV X ACC
+DIV ACC three three
+MOV Y ACC
+SUB ACC X Y
+MOV X ACC
+MUL ACC one three
+MOV Y ACC
+ADD ACC X Y
+MOV X ACC
+MOV three ACC
 WRITE three
-WRITE f
+WRITE "new___result"

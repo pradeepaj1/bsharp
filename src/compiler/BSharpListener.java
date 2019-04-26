@@ -39,18 +39,33 @@ public class BSharpListener extends BSharpBaseListener {
         intermediateCode.add("WRITE" + " " + ctx.getChild(2));
     }
 
+    boolean isTempRegUsed = false;
+
     @Override
     public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
         super.exitArithmeticExpression(ctx);
         if (ctx.op != null) {
             String left = ctx.left.children.size() == 1 ?
                     ctx.left.getChild(0).getText()
-                    : "ACC";
+                    : "X";
             String right = ctx.right.children.size() == 1 ?
                     ctx.right.getChild(0).getText()
-                    : "ACC";
+                    : "Y";
             String operator = getOperatorIntermediateCode(ctx.op.getText());
             intermediateCode.add(operator + " ACC " + left + " " + right);
+
+            if (!isTempRegUsed) {
+                intermediateCode.add("MOV "+ "X " + "ACC");
+                isTempRegUsed = true;
+            } else {
+                if (left.equals("X") && !right.equals("Y")) {
+                    intermediateCode.add("MOV "+ "X " + "ACC");
+                } else {
+                    intermediateCode.add("MOV "+ "Y " + "ACC");
+                }
+                isTempRegUsed = false;
+            }
+
         }
     }
 
