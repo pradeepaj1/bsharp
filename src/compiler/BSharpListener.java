@@ -1,7 +1,7 @@
 package compiler;
 
-import generatedcode.BSharpBaseListener;
-import generatedcode.BSharpParser;
+import bSharp.BSharpBaseListener;
+import bSharp.BSharpParser;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.io.FileUtils;
 import java.io.File;

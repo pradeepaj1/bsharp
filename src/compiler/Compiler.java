@@ -1,9 +1,7 @@
 package compiler;
 
-
-
-import generatedcode.BSharpLexer;
-import generatedcode.BSharpParser;
+import bSharp.BSharpLexer;
+import bSharp.BSharpParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -28,6 +26,8 @@ public class Compiler {
         ParseTreeWalker walker = new ParseTreeWalker();
         BSharpListener listener= new BSharpListener();
         walker.walk(listener, tree);
+
+
     }
 
 
