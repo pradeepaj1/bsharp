@@ -115,7 +115,10 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterBlockOfStatements(BSharpParser.BlockOfStatementsContext ctx) {
         super.enterBlockOfStatements(ctx);
-        intermediateCode.add("END CONDITION");
+        if(ctx.parent instanceof BSharpParser.IfBlockContext ||
+                ctx.parent instanceof BSharpParser.WhileStatementContext ){
+            intermediateCode.add("END_CONDITION");
+        }
     }
 
     @Override
@@ -162,10 +165,46 @@ public class BSharpListener extends BSharpBaseListener {
                     }
                     isLogicalTemp = false;
                 }
-
             }
         intermediateCode.add("END LOGICAL_EXPRESSION");
-        }
+    }
+
+    public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
+        super.enterConditionalStatement(ctx);
+        intermediateCode.add("START_IF_ELSE_BLOCK");
+    }
+
+    @Override
+    public void enterIfBlock(BSharpParser.IfBlockContext ctx) {
+        super.enterIfBlock(ctx);
+        intermediateCode.add("IF_BLOCK_STARTS" + " " + ctx.children.get(2));
+        intermediateCode.add("CONDITION_START");
+    }
+
+    @Override
+    public void exitIfBlock(BSharpParser.IfBlockContext ctx) {
+        super.exitIfBlock(ctx);
+        intermediateCode.add("IF_BLOCK_ENDS");
+    }
+
+    @Override
+    public void enterElseBlock(BSharpParser.ElseBlockContext ctx) {
+        super.enterElseBlock(ctx);
+        intermediateCode.add("ELSE_BLOCK_STARTS");
+    }
+
+    @Override
+    public void exitElseBlock(BSharpParser.ElseBlockContext ctx) {
+        super.exitElseBlock(ctx);
+        intermediateCode.add("ELSE_BLOCK_ENDS");
+    }
+
+    @Override
+    public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
+        super.exitConditionalStatement(ctx);
+        intermediateCode.add("END_IF_ELSE_BLOCK");
+    }
+
 
     private String getLogicalOperatorIntermediateCode(String logicalOperator) {
         String logicalOperatorIntermediateCode = null;
@@ -241,29 +280,16 @@ public class BSharpListener extends BSharpBaseListener {
         return relationalOperatorIntermediateCode;
     }
 
-
-    public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
-        super.enterConditionalStatement(ctx);
-        intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
-    }
-
-    @Override
-    public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
-        super.exitConditionalStatement(ctx);
-        intermediateCode.add("END IF");
-    }
-
     @Override
     public void enterWhileStatement(BSharpParser.WhileStatementContext ctx) {
         super.enterWhileStatement(ctx);
-        intermediateCode.add("BEGIN WHILE");
-        intermediateCode.add("BEGIN CONDITION");
+        intermediateCode.add("BEGIN_WHILE");
+        intermediateCode.add("BEGIN_CONDITION");
     }
 
     @Override
     public void exitWhileStatement(BSharpParser.WhileStatementContext ctx) {
         super.exitWhileStatement(ctx);
-        intermediateCode.add("END WHILE");
+        intermediateCode.add("END_WHILE");
     }
-
 }
