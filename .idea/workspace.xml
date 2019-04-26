@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e012bde4-da5b-431d-9710-423e7ae891fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/s.intermediate" beforeDir="false" afterPath="$PROJECT_DIR$/data/s.intermediate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sampleprogram1" beforeDir="false" afterPath="$PROJECT_DIR$/data/sampleprogram1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/BSharpListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/BSharpListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,15 +19,46 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SER502$lag.ic" NAME="lag Coverage Results" MODIFIED="1556059640347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="541029519">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="g4" value="42" />
+          <entry key="java" value="65" />
+          <entry key="sampleprogram1" value="89" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="ANTLR v4 grammar file" value="42" />
+          <entry key="JAVA" value="65" />
+          <entry key="PLAIN_TEXT" value="89" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/BSharpListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="119" column="50" selection-start-line="119" selection-start-column="50" selection-end-line="119" selection-end-column="50" />
+            <state relative-caret-position="23">
+              <caret line="234" selection-start-line="234" selection-end-line="234" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4632#4633#0" expanded="true" />
                 <element signature="e#4677#4678#0" expanded="true" />
               </folding>
             </state>
@@ -32,13 +66,106 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/runtime/Runner.java">
+        <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/generatedcode/BSharpParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="127">
+              <caret line="1284" selection-start-line="1284" selection-end-line="1284" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#3187#3188#0" expanded="true" />
+                <element signature="e#3211#3212#0" expanded="true" />
+                <element signature="e#3261#3262#0" expanded="true" />
+                <element signature="e#3285#3286#0" expanded="true" />
+                <element signature="e#3795#3796#0" expanded="true" />
+                <element signature="e#3852#3853#0" expanded="true" />
+                <element signature="e#3902#3903#0" expanded="true" />
+                <element signature="e#3959#3960#0" expanded="true" />
+                <element signature="e#4008#4009#0" expanded="true" />
+                <element signature="e#4066#4067#0" expanded="true" />
+                <element signature="e#4136#4137#0" expanded="true" />
+                <element signature="e#4173#4174#0" expanded="true" />
+                <element signature="e#6342#6343#0" expanded="true" />
+                <element signature="e#6379#6380#0" expanded="true" />
+                <element signature="e#8872#8873#0" expanded="true" />
+                <element signature="e#8909#8910#0" expanded="true" />
+                <element signature="e#10709#10710#0" expanded="true" />
+                <element signature="e#10771#10772#0" expanded="true" />
+                <element signature="e#10813#10814#0" expanded="true" />
+                <element signature="e#10870#10871#0" expanded="true" />
+                <element signature="e#10944#10945#0" expanded="true" />
+                <element signature="e#10981#10982#0" expanded="true" />
+                <element signature="e#12510#12511#0" expanded="true" />
+                <element signature="e#12576#12577#0" expanded="true" />
+                <element signature="e#12708#12709#0" expanded="true" />
+                <element signature="e#12769#12770#0" expanded="true" />
+                <element signature="e#12948#12949#0" expanded="true" />
+                <element signature="e#13009#13010#0" expanded="true" />
+                <element signature="e#13059#13060#0" expanded="true" />
+                <element signature="e#13120#13121#0" expanded="true" />
+                <element signature="e#13199#13200#0" expanded="true" />
+                <element signature="e#13236#13237#0" expanded="true" />
+                <element signature="e#15783#15784#0" expanded="true" />
+                <element signature="e#15847#15848#0" expanded="true" />
+                <element signature="e#15930#15931#0" expanded="true" />
+                <element signature="e#15967#15968#0" expanded="true" />
+                <element signature="e#19191#19192#0" expanded="true" />
+                <element signature="e#19228#19229#0" expanded="true" />
+                <element signature="e#20999#21000#0" expanded="true" />
+                <element signature="e#21053#21054#0" expanded="true" />
+                <element signature="e#21093#21094#0" expanded="true" />
+                <element signature="e#21149#21150#0" expanded="true" />
+                <element signature="e#21233#21234#0" expanded="true" />
+                <element signature="e#21270#21271#0" expanded="true" />
+                <element signature="e#22853#22854#0" expanded="true" />
+                <element signature="e#22917#22918#0" expanded="true" />
+                <element signature="e#22973#22974#0" expanded="true" />
+                <element signature="e#23037#23038#0" expanded="true" />
+                <element signature="e#23108#23109#0" expanded="true" />
+                <element signature="e#23145#23146#0" expanded="true" />
+                <element signature="e#24657#24658#0" expanded="true" />
+                <element signature="e#24721#24722#0" expanded="true" />
+                <element signature="e#24794#24795#0" expanded="true" />
+                <element signature="e#24831#24832#0" expanded="true" />
+                <element signature="e#26132#26133#0" expanded="true" />
+                <element signature="e#26189#26190#0" expanded="true" />
+                <element signature="e#26270#26271#0" expanded="true" />
+                <element signature="e#26307#26308#0" expanded="true" />
+                <element signature="e#27749#27750#0" expanded="true" />
+                <element signature="e#27813#27814#0" expanded="true" />
+                <element signature="e#27869#27870#0" expanded="true" />
+                <element signature="e#27933#27934#0" expanded="true" />
+                <element signature="e#28011#28012#0" expanded="true" />
+                <element signature="e#28048#28049#0" expanded="true" />
+                <element signature="e#29605#29606#0" expanded="true" />
+                <element signature="e#29669#29670#0" expanded="true" />
+                <element signature="e#29750#29751#0" expanded="true" />
+                <element signature="e#29787#29788#0" expanded="true" />
+                <element signature="e#31768#31769#0" expanded="true" />
+                <element signature="e#31831#31832#0" expanded="true" />
+                <element signature="e#31892#31893#0" expanded="true" />
+                <element signature="e#31956#31957#0" expanded="true" />
+                <element signature="e#32008#32009#0" expanded="true" />
+                <element signature="e#32070#32071#0" expanded="true" />
+                <element signature="e#32151#32152#0" expanded="true" />
+                <element signature="e#32188#32189#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="870">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
             </state>
           </provider>
         </entry>
@@ -46,7 +173,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="157">
               <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -58,8 +185,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/s.intermediate">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="195">
+              <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -67,7 +194,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="199">
               <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
@@ -81,17 +208,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/sampleprogram1">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="90">
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="45" column="87" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="87" />
+            <state relative-caret-position="270">
+              <caret line="18" column="65" lean-forward="true" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -114,7 +241,6 @@
       <find>NEW</find>
       <find>NEWLINE</find>
       <find>operat</find>
-      <find>exitarit</find>
       <find>exitassi</find>
       <find>A B</find>
       <find>enterarith</find>
@@ -128,10 +254,16 @@
       <find>newline</find>
       <find>write</find>
       <find>double</find>
-      <find>whitespace</find>
       <find>conditionalStatement</find>
       <find>assign</find>
       <find>END</find>
+      <find>blockof</find>
+      <find>whitespace</find>
+      <find>terminalnode</find>
+      <find>LESS_THAN</find>
+      <find>logicalOperator</find>
+      <find>exitarit</find>
+      <find>ctx.left</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,11 +287,17 @@
         <option value="$PROJECT_DIR$/src/runtime/Runner.java" />
         <option value="$PROJECT_DIR$/src/compiler/Compiler.java" />
         <option value="$PROJECT_DIR$/data/s.intermediate" />
-        <option value="$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4" />
-        <option value="$PROJECT_DIR$/data/sampleprogram1" />
         <option value="$PROJECT_DIR$/src/compiler/BSharpListener.java" />
+        <option value="$PROJECT_DIR$/data/sampleprogram1" />
+        <option value="$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -194,44 +332,38 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
+              <item name="SER502-Spring2019-Team16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SER502-Spring2019-Team16" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
+              <item name="SER502-Spring2019-Team16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SER502-Spring2019-Team16" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
+              <item name="SER502-Spring2019-Team16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SER502-Spring2019-Team16" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
+              <item name="SER502-Spring2019-Team16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SER502-Spring2019-Team16" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
+              <item name="SER502-Spring2019-Team16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SER502-Spring2019-Team16" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="generatedcode" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SER502" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SER502" type="462c0819:PsiDirectoryNode" />
+              <item name="SER502-Spring2019-Team16" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SER502-Spring2019-Team16" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="runtime" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -239,6 +371,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -260,7 +393,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556259541810" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556261889449" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -340,7 +473,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71315000" />
+    <option name="totallyTimeSpent" value="73563000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,10 +485,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="720" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21147542" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20529328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -365,8 +498,8 @@
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.37244898" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.3253012" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.2686747" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.3192771" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32891566" />
@@ -374,7 +507,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32775453" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.33843538" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.33734939" />
       <window_info anchor="bottom" id="Tool Output" order="13" weight="0.32775453" />
       <window_info anchor="bottom" id="ANTLR Preview" order="14" weight="0.32775453" />
       <window_info anchor="right" id="Maven" order="0" visible="true" weight="0.12377049" />
@@ -441,6 +574,12 @@
           <properties />
           <option name="timeStamp" value="61" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/compiler/BSharpListener.java</url>
+          <line>231</line>
+          <properties />
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -502,13 +641,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/antlr4/generatecode/BSharpLexer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/antlr4/generatecode/BSharpLexer.tokens" />
     <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1425">
@@ -539,18 +671,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class" />
-    <entry file="file://$PROJECT_DIR$/src/compiler/BSharpVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/generatedcode/BSharpParser.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10812">
-          <caret line="643" selection-start-line="643" selection-end-line="643" />
+        <state relative-caret-position="870">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/BSharpVisitor.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/Contributions.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
+        <state relative-caret-position="200">
           <caret line="78" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -560,7 +701,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
+        <state relative-caret-position="157">
           <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -568,45 +709,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="373">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/Contributions.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/generatedcode/BSharpParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="1284" selection-start-line="1284" selection-end-line="1284" />
+          <folding>
+            <element signature="e#3187#3188#0" expanded="true" />
+            <element signature="e#3211#3212#0" expanded="true" />
+            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#3285#3286#0" expanded="true" />
+            <element signature="e#3795#3796#0" expanded="true" />
+            <element signature="e#3852#3853#0" expanded="true" />
+            <element signature="e#3902#3903#0" expanded="true" />
+            <element signature="e#3959#3960#0" expanded="true" />
+            <element signature="e#4008#4009#0" expanded="true" />
+            <element signature="e#4066#4067#0" expanded="true" />
+            <element signature="e#4136#4137#0" expanded="true" />
+            <element signature="e#4173#4174#0" expanded="true" />
+            <element signature="e#6342#6343#0" expanded="true" />
+            <element signature="e#6379#6380#0" expanded="true" />
+            <element signature="e#8872#8873#0" expanded="true" />
+            <element signature="e#8909#8910#0" expanded="true" />
+            <element signature="e#10709#10710#0" expanded="true" />
+            <element signature="e#10771#10772#0" expanded="true" />
+            <element signature="e#10813#10814#0" expanded="true" />
+            <element signature="e#10870#10871#0" expanded="true" />
+            <element signature="e#10944#10945#0" expanded="true" />
+            <element signature="e#10981#10982#0" expanded="true" />
+            <element signature="e#12510#12511#0" expanded="true" />
+            <element signature="e#12576#12577#0" expanded="true" />
+            <element signature="e#12708#12709#0" expanded="true" />
+            <element signature="e#12769#12770#0" expanded="true" />
+            <element signature="e#12948#12949#0" expanded="true" />
+            <element signature="e#13009#13010#0" expanded="true" />
+            <element signature="e#13059#13060#0" expanded="true" />
+            <element signature="e#13120#13121#0" expanded="true" />
+            <element signature="e#13199#13200#0" expanded="true" />
+            <element signature="e#13236#13237#0" expanded="true" />
+            <element signature="e#15783#15784#0" expanded="true" />
+            <element signature="e#15847#15848#0" expanded="true" />
+            <element signature="e#15930#15931#0" expanded="true" />
+            <element signature="e#15967#15968#0" expanded="true" />
+            <element signature="e#19191#19192#0" expanded="true" />
+            <element signature="e#19228#19229#0" expanded="true" />
+            <element signature="e#20999#21000#0" expanded="true" />
+            <element signature="e#21053#21054#0" expanded="true" />
+            <element signature="e#21093#21094#0" expanded="true" />
+            <element signature="e#21149#21150#0" expanded="true" />
+            <element signature="e#21233#21234#0" expanded="true" />
+            <element signature="e#21270#21271#0" expanded="true" />
+            <element signature="e#22853#22854#0" expanded="true" />
+            <element signature="e#22917#22918#0" expanded="true" />
+            <element signature="e#22973#22974#0" expanded="true" />
+            <element signature="e#23037#23038#0" expanded="true" />
+            <element signature="e#23108#23109#0" expanded="true" />
+            <element signature="e#23145#23146#0" expanded="true" />
+            <element signature="e#24657#24658#0" expanded="true" />
+            <element signature="e#24721#24722#0" expanded="true" />
+            <element signature="e#24794#24795#0" expanded="true" />
+            <element signature="e#24831#24832#0" expanded="true" />
+            <element signature="e#26132#26133#0" expanded="true" />
+            <element signature="e#26189#26190#0" expanded="true" />
+            <element signature="e#26270#26271#0" expanded="true" />
+            <element signature="e#26307#26308#0" expanded="true" />
+            <element signature="e#27749#27750#0" expanded="true" />
+            <element signature="e#27813#27814#0" expanded="true" />
+            <element signature="e#27869#27870#0" expanded="true" />
+            <element signature="e#27933#27934#0" expanded="true" />
+            <element signature="e#28011#28012#0" expanded="true" />
+            <element signature="e#28048#28049#0" expanded="true" />
+            <element signature="e#29605#29606#0" expanded="true" />
+            <element signature="e#29669#29670#0" expanded="true" />
+            <element signature="e#29750#29751#0" expanded="true" />
+            <element signature="e#29787#29788#0" expanded="true" />
+            <element signature="e#31768#31769#0" expanded="true" />
+            <element signature="e#31831#31832#0" expanded="true" />
+            <element signature="e#31892#31893#0" expanded="true" />
+            <element signature="e#31956#31957#0" expanded="true" />
+            <element signature="e#32008#32009#0" expanded="true" />
+            <element signature="e#32070#32071#0" expanded="true" />
+            <element signature="e#32151#32152#0" expanded="true" />
+            <element signature="e#32188#32189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/sampleprogram1">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="45" column="87" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="87" />
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/s.intermediate">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="195">
+          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/BSharpListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="119" column="50" selection-start-line="119" selection-start-column="50" selection-end-line="119" selection-end-column="50" />
+        <state relative-caret-position="23">
+          <caret line="234" selection-start-line="234" selection-end-line="234" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4632#4633#0" expanded="true" />
             <element signature="e#4677#4678#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="65" lean-forward="true" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
         </state>
       </provider>
     </entry>

@@ -52,11 +52,10 @@ logicalExpression                   : arithmeticExpression
                                     | VARIABLE
                                     | BOOLVALUE;
 
-relationalExpression				: arithmeticExpression
-                                    | left=relationalExpression op=relationalOperator right=relationalExpression
-                                    | VARIABLE
-                                    | DOUBLEVALUE;
-
+relationalExpression				: VARIABLE
+                                    | DOUBLEVALUE
+                                    | arithmeticExpression
+                                    | left=relationalExpression op=relationalOperator right=relationalExpression;
 
 arithmeticExpression				: left=arithmeticExpression op=('*' | '/' ) right=arithmeticExpression
                                     | left=arithmeticExpression op=('+' | '-' ) right=arithmeticExpression

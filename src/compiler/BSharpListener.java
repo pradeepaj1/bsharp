@@ -1,11 +1,9 @@
 package compiler;
 
-
 import generatedcode.BSharpBaseListener;
 import generatedcode.BSharpParser;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +12,8 @@ import java.util.List;
 public class BSharpListener extends BSharpBaseListener {
 
     private static List<String> intermediateCode = new ArrayList<String>();
+    private boolean isTempRegUsed = false;
+    private boolean isLogicalTemp = false;
 
     @Override
     public void enterDeclaration(BSharpParser.DeclarationContext ctx) {
@@ -40,17 +40,14 @@ public class BSharpListener extends BSharpBaseListener {
         intermediateCode.add("WRITE" + " " + ctx.getChild(2));
     }
 
-    boolean isTempRegUsed = false;
-    boolean isLogicalTemp = false;
-
     @Override
     public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
         super.exitArithmeticExpression(ctx);
         if (ctx.op != null) {
-            String left = ctx.left.children.size() == 1 ?
+            String left = ctx.left.children.size() == 1 && ctx.left.getChild(0) instanceof TerminalNodeImpl ?
                     ctx.left.getChild(0).getText()
                     : "X";
-            String right = ctx.right.children.size() == 1 ?
+            String right = ctx.right.children.size() == 1 && ctx.right.getChild(0) instanceof TerminalNodeImpl ?
                     ctx.right.getChild(0).getText()
                     : "Y";
             String operator = getOperatorIntermediateCode(ctx.op.getText());
@@ -110,6 +107,7 @@ public class BSharpListener extends BSharpBaseListener {
         } else {
             intermediateCode.add("MOV "+ ctx.children.get(0) + " ACC");
         }
+        isTempRegUsed = false;
     }
 
     @Override
@@ -119,6 +117,7 @@ public class BSharpListener extends BSharpBaseListener {
                 ctx.parent instanceof BSharpParser.WhileStatementContext ){
             intermediateCode.add("END_CONDITION");
         }
+        isLogicalTemp = false;
     }
 
     @Override
@@ -145,10 +144,10 @@ public class BSharpListener extends BSharpBaseListener {
     public void exitLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
         super.exitLogicalExpression(ctx);
         if (ctx.op != null) {
-                String left = ctx.left.children.size() == 1 ?
+                String left = ctx.left.children.size() == 1 && ctx.left.getChild(0) instanceof TerminalNodeImpl ?
                         ctx.left.getChild(0).getText()
                         : "X";
-                String right = ctx.right.children.size() == 1 ?
+                String right = ctx.right.children.size() == 1 && ctx.right.getChild(0) instanceof TerminalNodeImpl ?
                         ctx.right.getChild(0).getText()
                         : "Y";
                 String logicalOperator = getLogicalOperatorIntermediateCode(ctx.op.getText());
@@ -227,10 +226,10 @@ public class BSharpListener extends BSharpBaseListener {
     public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.exitRelationalExpression(ctx);
          if (ctx.op != null) {
-                String left = ctx.left.children.size() == 1 ?
+                String left = ctx.left.children.size() == 1 && ctx.left.getChild(0) instanceof TerminalNodeImpl ?
                         ctx.left.getChild(0).getText()
                         : "X";
-                String right = ctx.right.children.size() == 1 ?
+                String right = ctx.right.children.size() == 1 && ctx.right.getChild(0) instanceof TerminalNodeImpl ?
                         ctx.right.getChild(0).getText()
                         : "Y";
                 String logicalOperator = getRelationalOperatorIntermediateCode(ctx.op.getText());
@@ -247,7 +246,6 @@ public class BSharpListener extends BSharpBaseListener {
                     }
                     isLogicalTemp = false;
                 }
-
             }
         }
 
