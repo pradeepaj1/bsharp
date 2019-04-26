@@ -37,7 +37,11 @@ assignmentStatement      			: VARIABLE EQUAL DOUBLEVALUE
 boolAssignment						: VARIABLE EQUAL BOOLVALUE
                                     | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE;
 
-conditionalStatement				: IF '(' booleanExpression ')' blockOfStatements (ELSE blockOfStatements)?;
+conditionalStatement				: ifBlock (elseBlock)?;
+
+ifBlock                             : IF '(' booleanExpression ')' trueBlock=blockOfStatements;
+
+elseBlock                           : ELSE falseBlock=blockOfStatements;
 
 blockOfStatements					: '{' statements '}';
 
