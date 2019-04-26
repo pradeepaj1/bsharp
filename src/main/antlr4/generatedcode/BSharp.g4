@@ -48,12 +48,12 @@ whileStatement						: WHILE '(' booleanExpression ')' blockOfStatements;
 booleanExpression                   : relationalExpression | logicalExpression;
 
 logicalExpression                   : arithmeticExpression
-                                    | logicalExpression logicalOperator logicalExpression
+                                    | left=logicalExpression op=logicalOperator right=logicalExpression
                                     | VARIABLE
                                     | BOOLVALUE;
 
 relationalExpression				: arithmeticExpression
-                                    | relationalExpression relationalOperator relationalExpression
+                                    | left=relationalExpression op=relationalOperator right=relationalExpression
                                     | VARIABLE
                                     | DOUBLEVALUE;
 

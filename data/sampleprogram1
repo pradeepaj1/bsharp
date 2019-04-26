@@ -1,4 +1,8 @@
-a = 10.0;
-b = 20.0;
-c = a + b;
-write(c);
+double one=1.0;
+double two=20.0;
+double three=-15.0;
+while(one>5.5){
+write("HELLO");
+one=one+2.0;
+}
+write ("WHILE END");write(three);

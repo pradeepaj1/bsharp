@@ -40,7 +40,8 @@ public class BSharpListener extends BSharpBaseListener {
         intermediateCode.add("WRITE" + " " + ctx.getChild(2));
     }
 
-    private boolean isTempRegUsed = false;
+    boolean isTempRegUsed = false;
+    boolean isLogicalTemp = false;
 
     @Override
     public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
@@ -112,6 +113,12 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
     @Override
+    public void enterBlockOfStatements(BSharpParser.BlockOfStatementsContext ctx) {
+        super.enterBlockOfStatements(ctx);
+        intermediateCode.add("END CONDITION");
+    }
+
+    @Override
     public void enterBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
         super.enterBoolAssignment(ctx);
         if(ctx.children.size() == 3)
@@ -131,100 +138,126 @@ public class BSharpListener extends BSharpBaseListener {
         super.exitBoolAssignment(ctx);
     }
 
-
     @Override
     public void exitLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
         super.exitLogicalExpression(ctx);
+        if (ctx.op != null) {
+                String left = ctx.left.children.size() == 1 ?
+                        ctx.left.getChild(0).getText()
+                        : "X";
+                String right = ctx.right.children.size() == 1 ?
+                        ctx.right.getChild(0).getText()
+                        : "Y";
+                String logicalOperator = getLogicalOperatorIntermediateCode(ctx.op.getText());
+                intermediateCode.add(logicalOperator + " ACC " + left + " " + right);
+
+                if (!isLogicalTemp) {
+                    intermediateCode.add("MOV "+ "X " + "ACC");
+                    isLogicalTemp = true;
+                } else {
+                    if (left.equals("X") && !right.equals("Y")) {
+                        intermediateCode.add("MOV "+ "X " + "ACC");
+                    } else {
+                        intermediateCode.add("MOV "+ "Y " + "ACC");
+                    }
+                    isLogicalTemp = false;
+                }
+
+            }
+        intermediateCode.add("END LOGICAL_EXPRESSION");
+        }
+
+    private String getLogicalOperatorIntermediateCode(String logicalOperator) {
+        String logicalOperatorIntermediateCode = null;
+        if(logicalOperator.equals("&&"))
+        {
+            logicalOperatorIntermediateCode = "AND";
+        }
+        else if(logicalOperator.equals("||"))
+        {
+            logicalOperatorIntermediateCode = "OR";
+        }
+        else if(logicalOperator.equals("!"))
+        {
+            logicalOperatorIntermediateCode = "NOT";
+        }
+        return logicalOperatorIntermediateCode;
+    }
+
+    @Override
+    public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
+        super.exitRelationalExpression(ctx);
+         if (ctx.op != null) {
+                String left = ctx.left.children.size() == 1 ?
+                        ctx.left.getChild(0).getText()
+                        : "X";
+                String right = ctx.right.children.size() == 1 ?
+                        ctx.right.getChild(0).getText()
+                        : "Y";
+                String logicalOperator = getRelationalOperatorIntermediateCode(ctx.op.getText());
+                intermediateCode.add(logicalOperator + " ACC " + left + " " + right);
+
+                if (!isLogicalTemp) {
+                    intermediateCode.add("MOV "+ "X " + "ACC");
+                    isLogicalTemp = true;
+                } else {
+                    if (left.equals("X") && !right.equals("Y")) {
+                        intermediateCode.add("MOV "+ "X " + "ACC");
+                    } else {
+                        intermediateCode.add("MOV "+ "Y " + "ACC");
+                    }
+                    isLogicalTemp = false;
+                }
+
+            }
+        }
+
+    private String getRelationalOperatorIntermediateCode(String relOperator) {
+        String relationalOperatorIntermediateCode = null;
+        if(relOperator.equals("<"))
+        {
+            relationalOperatorIntermediateCode = "LESS_THAN";
+        }
+        else if(relOperator.equals(">"))
+        {
+            relationalOperatorIntermediateCode = "GREATER_THAN";
+        }
+        else if(relOperator.equals("<="))
+        {
+            relationalOperatorIntermediateCode = "LESS_THAN_EQUAL_TO";
+        }
+        else if(relOperator.equals(">="))
+        {
+            relationalOperatorIntermediateCode = "GREATER_THAN_EQUAL_TO";
+        }
+        else if(relOperator.equals("=="))
+        {
+            relationalOperatorIntermediateCode = "DOUBLE_EQUAL_TO";
+        }
+        else if(relOperator.equals("!="))
+        {
+            relationalOperatorIntermediateCode = "NOT_EQUAL_TO";
+        }
+        return relationalOperatorIntermediateCode;
     }
 
 
     public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.enterConditionalStatement(ctx);
-        intermediateCode.add("START_IF_ELSE_BLOCK");
+        intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
     }
 
     @Override
     public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.exitConditionalStatement(ctx);
-        intermediateCode.add("END_IF_ELSE_BLOCK");
-    }
-
-    @Override
-    public void enterIfBlock(BSharpParser.IfBlockContext ctx) {
-        super.enterIfBlock(ctx);
-    }
-
-    @Override
-    public void exitIfBlock(BSharpParser.IfBlockContext ctx) {
-        super.exitIfBlock(ctx);
-    }
-
-    @Override
-    public void enterElseBlock(BSharpParser.ElseBlockContext ctx) {
-        super.enterElseBlock(ctx);
-    }
-
-    @Override
-    public void exitElseBlock(BSharpParser.ElseBlockContext ctx) {
-        super.exitElseBlock(ctx);
-    }
-
-    @Override
-    public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
-        super.enterLogicalOperator(ctx);
-        intermediateCode.add("LOGICAL_OP_COMPARE" + " " + ctx.children.get(0));
-        if (ctx.children.get(0).equals("&&")){
-            intermediateCode.add("AND_CHECK");
-        }
-        else if (ctx.children.get(0).getText().equals("||")){
-            intermediateCode.add("OR_CHECK");
-        }
-        else if (ctx.children.get(0).getText().equals("!")){
-            intermediateCode.add("NEGATION_CHECK");
-        }
-    }
-
-    @Override
-    public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
-        super.exitLogicalOperator(ctx);
-        intermediateCode.add("EXIT LOG_OP");
-    }
-
-
-    @Override
-    public void enterRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
-        super.enterRelationalOperator(ctx);
-        intermediateCode.add("RELATIONAL_OP_COMPARE" + " " + ctx.children.get(0));
-        if (ctx.children.get(0).equals(">")){
-            intermediateCode.add("GREATER_THAN_CHECK");
-        }
-        else if (ctx.children.get(0).equals("<")){
-            intermediateCode.add("LESS_THAN_CHECK");
-        }
-        else if (ctx.children.get(0).equals(">=")){
-            intermediateCode.add("GREATER_THAN_EQUAL_CHECK");
-        }
-        else if (ctx.children.get(0).equals("<=")){
-            intermediateCode.add("LESSER_THAN_EQUAL_CHECK_CHECK");
-        }
-        else if (ctx.children.get(0).equals("==")){
-            intermediateCode.add("EQUAL_TO_CHECK");
-        }
-        else if (ctx.children.get(0).equals("!=")){
-            intermediateCode.add("NOT_EQUAL_CHECK");
-        }
-    }
-
-    @Override
-    public void exitRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
-        super.exitRelationalOperator(ctx);
-        intermediateCode.add("EXIT REL_OP");
+        intermediateCode.add("END IF");
     }
 
     @Override
     public void enterWhileStatement(BSharpParser.WhileStatementContext ctx) {
         super.enterWhileStatement(ctx);
-        intermediateCode.add("BEGIN WHILE" + " " + ctx.children.get(2));
+        intermediateCode.add("BEGIN WHILE");
+        intermediateCode.add("BEGIN CONDITION");
     }
 
     @Override
@@ -233,16 +266,4 @@ public class BSharpListener extends BSharpBaseListener {
         intermediateCode.add("END WHILE");
     }
 
-    @Override
-    public void enterRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
-        super.enterRelationalExpression(ctx);
-        intermediateCode.add("ENTER REL EX" + " " + ctx.children.get(0));
-    }
-
-
-    @Override
-    public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
-        super.exitRelationalExpression(ctx);
-        intermediateCode.add("EXIT REL EX");
-    }
 }
