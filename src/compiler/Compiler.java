@@ -1,8 +1,9 @@
 package compiler;
 
 
-import main.antlr4.generatecode.BSharpLexer;
-import main.antlr4.generatecode.BSharpParser;
+
+import generatedcode.BSharpLexer;
+import generatedcode.BSharpParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -22,9 +23,18 @@ public class Compiler {
         BSharpParser parser = new BSharpParser(tokens);
         ParseTree tree = parser.bSharp();
         System.out.println(tree);
+
         ParseTreeWalker walker = new ParseTreeWalker();
         BSharpListener listener= new BSharpListener();
         walker.walk(listener, tree);
+
+        BSharpVisitor visitor = new BSharpVisitor();
+        visitor.visit(tree);
+    }
+
+
+    private void compile() {
+
     }
 
     private static String readProgramFromFile() {

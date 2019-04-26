@@ -14,7 +14,8 @@ declaration     					: DOUBLE WHITESPACE VARIABLE SEMICOLON
                                     | BOOL WHITESPACE VARIABLE SEMICOLON
                                     | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE SEMICOLON;
 
-writeStatement						: WRITE WHITESPACE WORD SEMICOLON;
+writeStatement						: WRITE WHITESPACE WORD SEMICOLON
+                                    | WRITE WHITESPACE VARIABLE SEMICOLON;
 
 statements							: singleStatement NEWLINE
                                     | singleStatement NEWLINE statements;
@@ -55,16 +56,15 @@ relationalExpression				: arithmeticExpression
                                     | DOUBLEVALUE;
 
 
-arithmeticExpression				: arithmeticExpression arithmeticOperator arithmeticExpression
-                                    |'(' arithmeticExpression ')'
+arithmeticExpression				: left=arithmeticExpression op=('*' | '/' ) right=arithmeticExpression
+                                    | left=arithmeticExpression op=('+' | '-' ) right=arithmeticExpression
+                                    | '(' arithmeticExpression ')'
                                     | VARIABLE
                                     | DOUBLEVALUE;
 
 relationalOperator					: '<' | '>' | '<=' | '>=' | '==' | '!=';
 
 logicalOperator					    : '&&' | '||' | '!';
-
-arithmeticOperator					: '+' | '-' | '*' | '/';
 
 
 /*
@@ -76,10 +76,12 @@ fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
 fragment TRUE		: 'True';
 fragment FALSE		: 'False';
-WHITESPACE : ' ';
+fragment MINUS      : '-';
+
+WHITESPACE  : ' ';
 WORD		: '"' (LOWERCASE|UPPERCASE|'_'| WHITESPACE)+ '"';
-WRITE: 'write' ;
-DOUBLEVALUE		: DIGIT+ '.' DIGIT+ ;
+WRITE       : 'write' ;
+DOUBLEVALUE	: MINUS? DIGIT+ '.' DIGIT+ ;
 BOOLVALUE   : TRUE | FALSE ;
 DOUBLE	    : 'double';
 BOOL        : 'bool';
@@ -88,5 +90,5 @@ EQUAL       : '=';
 IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
-VARIABLE : (LOWERCASE | UPPERCASE | '_')+ ;
+VARIABLE    : (LOWERCASE | UPPERCASE | '_')+ ;
 NEWLINE     : '\n';

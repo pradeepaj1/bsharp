@@ -1,3 +1,10 @@
 start
-write "H";
+double one=1.0;
+double two=20.0;
+double three=-15.0;
+three=one+two*three;
+write "ans_is";
+f=one+two*three;
+write three;
+write f;
 end
