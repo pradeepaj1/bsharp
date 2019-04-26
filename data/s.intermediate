@@ -1,0 +1,22 @@
+TYPE double one
+MOV ACC 1.0
+MOV one ACC
+TYPE double two
+MOV ACC 20.0
+MOV two ACC
+TYPE double three
+MOV ACC -15.0
+MOV three ACC
+ADD ACC one two
+MOV X ACC
+DIV ACC three three
+MOV Y ACC
+SUB ACC X Y
+MOV X ACC
+MUL ACC one three
+MOV Y ACC
+ADD ACC X Y
+MOV X ACC
+MOV three ACC
+WRITE three
+WRITE "new___result"

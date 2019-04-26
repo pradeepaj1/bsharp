@@ -1,7 +1,9 @@
 package compiler;
 
-import main.antlr4.generatecode.BSharpLexer;
-import main.antlr4.generatecode.BSharpParser;
+
+
+import generatedcode.BSharpLexer;
+import generatedcode.BSharpParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -14,16 +16,25 @@ import java.io.IOException;
 
 public class Compiler {
     public static void main(String args[]) {
-        System.out.println("Compilation Started.. ");
+        System.out.println("compilation started.. ");
 
         BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile()));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         BSharpParser parser = new BSharpParser(tokens);
         ParseTree tree = parser.bSharp();
         System.out.println(tree);
+
         ParseTreeWalker walker = new ParseTreeWalker();
         BSharpListener listener= new BSharpListener();
         walker.walk(listener, tree);
+
+        BSharpVisitor visitor = new BSharpVisitor();
+        visitor.visit(tree);
+    }
+
+
+    private void compile() {
+
     }
 
     private static String readProgramFromFile() {

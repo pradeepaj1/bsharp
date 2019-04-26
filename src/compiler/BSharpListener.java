@@ -1,8 +1,8 @@
 package compiler;
 
 
-import main.antlr4.generatecode.BSharpBaseListener;
-import main.antlr4.generatecode.BSharpParser;
+import generatedcode.BSharpBaseListener;
+import generatedcode.BSharpParser;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -17,13 +17,14 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterDeclaration(BSharpParser.DeclarationContext ctx) {
         super.enterDeclaration(ctx);
-        intermediateCode.add("TYPE " + ctx.children.get(0) + " " + ctx.children.get(2));
 
+        intermediateCode.add("TYPE " + ctx.getChild(0) + " " + ctx.getChild(2));
+
+        /* declaration with initialization */
         if (ctx.children.size() > 4) {
-            intermediateCode.add("MOV ACC " + ctx.children.get(4));
-            intermediateCode.add("MOV " +  ctx.children.get(2) + " " + "ACC");
+            intermediateCode.add("MOV ACC " + ctx.getChild(4));
+            intermediateCode.add("MOV " + ctx.getChild(2) + " " + "ACC");
         }
-
     }
 
     @Override
@@ -31,20 +32,62 @@ public class BSharpListener extends BSharpBaseListener {
         super.exitDeclaration(ctx);
     }
 
+
     @Override
     public void enterWriteStatement(BSharpParser.WriteStatementContext ctx) {
         super.enterWriteStatement(ctx);
-        intermediateCode.add("WRITE" + " " + ctx.children.get(2));
+        intermediateCode.add("WRITE" + " " + ctx.getChild(2));
     }
 
-    @Override
-    public void exitWriteStatement(BSharpParser.WriteStatementContext ctx) {
-        super.exitWriteStatement(ctx);
-    }
+    boolean isTempRegUsed = false;
 
     @Override
-    public void enterBSharp(BSharpParser.BSharpContext ctx) {
-        super.enterBSharp(ctx);
+    public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
+        super.exitArithmeticExpression(ctx);
+        if (ctx.op != null) {
+            String left = ctx.left.children.size() == 1 ?
+                    ctx.left.getChild(0).getText()
+                    : "X";
+            String right = ctx.right.children.size() == 1 ?
+                    ctx.right.getChild(0).getText()
+                    : "Y";
+            String operator = getOperatorIntermediateCode(ctx.op.getText());
+            intermediateCode.add(operator + " ACC " + left + " " + right);
+
+            if (!isTempRegUsed) {
+                intermediateCode.add("MOV "+ "X " + "ACC");
+                isTempRegUsed = true;
+            } else {
+                if (left.equals("X") && !right.equals("Y")) {
+                    intermediateCode.add("MOV "+ "X " + "ACC");
+                } else {
+                    intermediateCode.add("MOV "+ "Y " + "ACC");
+                }
+                isTempRegUsed = false;
+            }
+
+        }
+    }
+
+    private String getOperatorIntermediateCode(String operator) {
+        String operatorIntermediateCode = null;
+        if(operator.equals("+"))
+        {
+            operatorIntermediateCode = "ADD";
+        }
+        else if(operator.equals("-"))
+        {
+            operatorIntermediateCode = "SUB";
+        }
+        else if(operator.equals("*"))
+        {
+            operatorIntermediateCode = "MUL";
+        }
+        else if(operator.equals("/"))
+        {
+            operatorIntermediateCode = "DIV";
+        }
+        return operatorIntermediateCode;
     }
 
     @Override
@@ -58,12 +101,60 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
     @Override
+    public void enterAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
+        super.enterAssignmentStatement(ctx);
+//        if(ctx.children.size() == 3)
+//        {
+//            if (ctx.children.get(2) instanceof BSharpParser.ArithmeticExpressionContext){
+////                intermediateCode.add("MOV ACC " + ctx.children.get(2).getChild(0));
+////                intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
+//            }
+//        }
+//        else
+//        {
+//            intermediateCode.add("TYPE "+ctx.children.get(0)+" "+ctx.children.get(2));
+//            intermediateCode.add("MOV ACC " + ctx.children.get(4));
+//            intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
+//        }
+
+    }
+
+    @Override
+    public void exitAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
+        super.exitAssignmentStatement(ctx);
+        intermediateCode.add("MOV "+ ctx.children.get(0) + " ACC");
+    }
+
+    @Override
+    public void enterBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
+        super.enterBoolAssignment(ctx);
+        if(ctx.children.size() == 3)
+        {
+            intermediateCode.add("MOV ACC " + ctx.children.get(2));
+            intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
+        }
+        else {
+            intermediateCode.add("TYPE "+ctx.children.get(0)+" "+ctx.children.get(2));
+            intermediateCode.add("MOV ACC " + ctx.children.get(4));
+            intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
+        }
+    }
+
+    @Override
+    public void exitBoolAssignment(BSharpParser.BoolAssignmentContext ctx) {
+        super.exitBoolAssignment(ctx);
+    }
+
+
+    @Override
+    public void exitLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
+        super.exitLogicalExpression(ctx);
+    }
+
+
     public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.enterConditionalStatement(ctx);
         intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
-        if (ctx.children.get(5).getText().equals("else")) {
-            intermediateCode.add("BEGIN ELSE " + ctx.children.get(4));
-        }
     }
 
     @Override
@@ -75,14 +166,14 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.enterLogicalOperator(ctx);
-        intermediateCode.add("COMPARE LOGI_OP" + " " + ctx.children.get(0));
+        intermediateCode.add("LOGICAL_OP_COMPARE" + " " + ctx.children.get(0));
         if (ctx.children.get(0).equals("&&")){
             intermediateCode.add("AND_CHECK");
         }
-        else if (ctx.children.get(0).equals("||")){
+        else if (ctx.children.get(0).getText().equals("||")){
             intermediateCode.add("OR_CHECK");
         }
-        else if (ctx.children.get(0).equals("!")){
+        else if (ctx.children.get(0).getText().equals("!")){
             intermediateCode.add("NEGATION_CHECK");
         }
     }
@@ -90,13 +181,32 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.exitLogicalOperator(ctx);
-        intermediateCode.add("EXIT_LOGI_OP");
+        intermediateCode.add("EXIT LOG_OP");
     }
+
 
     @Override
     public void enterRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
         super.enterRelationalOperator(ctx);
-        intermediateCode.add("COMPARE REL_OP" + " " + ctx.children.get(0));
+        intermediateCode.add("RELATIONAL_OP_COMPARE" + " " + ctx.children.get(0));
+        if (ctx.children.get(0).equals(">")){
+            intermediateCode.add("GREATER_THAN_CHECK");
+        }
+        else if (ctx.children.get(0).equals("<")){
+            intermediateCode.add("LESS_THAN_CHECK");
+        }
+        else if (ctx.children.get(0).equals(">=")){
+            intermediateCode.add("GREATER_THAN_EQUAL_CHECK");
+        }
+        else if (ctx.children.get(0).equals("<=")){
+            intermediateCode.add("LESSER_THAN_EQUAL_CHECK_CHECK");
+        }
+        else if (ctx.children.get(0).equals("==")){
+            intermediateCode.add("EQUAL_TO_CHECK");
+        }
+        else if (ctx.children.get(0).equals("!=")){
+            intermediateCode.add("NOT_EQUAL_CHECK");
+        }
     }
 
     @Override
@@ -120,26 +230,13 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.enterRelationalExpression(ctx);
-        intermediateCode.add("REL_CONDITION_BEGIN" + " " + ctx.children.get(0));
+        intermediateCode.add("ENTER REL EX" + " " + ctx.children.get(0));
     }
 
 
     @Override
     public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.exitRelationalExpression(ctx);
-        intermediateCode.add("REL_CONDITION_END");
+        intermediateCode.add("EXIT REL EX");
     }
-
-    @Override
-    public void enterStatements(BSharpParser.StatementsContext ctx) {
-        super.enterStatements(ctx);
-        intermediateCode.add("STATEMENTS_BEGIN");
-    }
-
-    @Override
-    public void exitStatements(BSharpParser.StatementsContext ctx) {
-        super.exitStatements(ctx);
-        intermediateCode.add("STATEMENTS_END");
-    }
-
 }

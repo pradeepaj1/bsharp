@@ -1,5 +1,8 @@
 start
-bool c=False;
-double d=10.0;
-write "Hello";
+double one=1.0;
+double two=20.0;
+double three=-15.0;
+three=one+two-three/three+one*three;
+write three;
+write "new___result";
 end

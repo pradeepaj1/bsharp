@@ -5,7 +5,7 @@ grammar BSharp;
 *
 */
 
-bSharp 								: 'start' NEWLINE body NEWLINE 'end';
+bSharp 								: 'start' NEWLINE body 'end';
 
 body								: (declaration NEWLINE)* statements;
 
@@ -14,7 +14,8 @@ declaration     					: DOUBLE WHITESPACE VARIABLE SEMICOLON
                                     | BOOL WHITESPACE VARIABLE SEMICOLON
                                     | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE SEMICOLON;
 
-writeStatement						: WRITE WHITESPACE WORD SEMICOLON;
+writeStatement						: WRITE WHITESPACE WORD SEMICOLON
+                                    | WRITE WHITESPACE VARIABLE SEMICOLON;
 
 statements							: singleStatement NEWLINE
                                     | singleStatement NEWLINE statements;
@@ -27,14 +28,14 @@ singleStatement						: assignmentStatement SEMICOLON
 
 assignmentStatement      			: VARIABLE EQUAL DOUBLEVALUE
                                     | VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE VARIABLE EQUAL DOUBLEVALUE
-                                    | BOOL VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE VARIABLE EQUAL arithmeticExpression
-                                    | BOOL VARIABLE EQUAL booleanExpression
-                                    | VARIABLE EQUAL arithmeticExpression ;
+                                    | DOUBLE WHITESPACE VARIABLE EQUAL DOUBLEVALUE
+                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE
+                                    | DOUBLE WHITESPACE VARIABLE EQUAL arithmeticExpression
+                                    | BOOL WHITESPACE VARIABLE EQUAL booleanExpression
+                                    | VARIABLE EQUAL arithmeticExpression;
 
 boolAssignment						: VARIABLE EQUAL BOOLVALUE
-                                    | BOOL VARIABLE EQUAL BOOLVALUE;
+                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE;
 
 conditionalStatement				: IF '(' booleanExpression ')' blockOfStatements (ELSE blockOfStatements)?;
 
@@ -54,16 +55,15 @@ relationalExpression				: arithmeticExpression
                                     | VARIABLE
                                     | DOUBLEVALUE;
 
-arithmeticExpression				: arithmeticExpression arithmeticOperator arithmeticExpression
-                                    |'(' arithmeticExpression ')'
+
+arithmeticExpression				: left=arithmeticExpression op=('*' | '/' ) right=arithmeticExpression
+                                    | left=arithmeticExpression op=('+' | '-' ) right=arithmeticExpression
                                     | VARIABLE
                                     | DOUBLEVALUE;
 
 relationalOperator					: '<' | '>' | '<=' | '>=' | '==' | '!=';
 
 logicalOperator					    : '&&' | '||' | '!';
-
-arithmeticOperator					: '+' | '-' | '*' | '/';
 
 
 /*
@@ -75,10 +75,12 @@ fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
 fragment TRUE		: 'True';
 fragment FALSE		: 'False';
-WHITESPACE : ' ';
+fragment MINUS      : '-';
+
+WHITESPACE  : ' ';
 WORD		: '"' (LOWERCASE|UPPERCASE|'_'| WHITESPACE)+ '"';
-WRITE: 'write' ;
-DOUBLEVALUE		: DIGIT+ '.' DIGIT+ ;
+WRITE       : 'write' ;
+DOUBLEVALUE	: MINUS? DIGIT+ '.' DIGIT+ ;
 BOOLVALUE   : TRUE | FALSE ;
 DOUBLE	    : 'double';
 BOOL        : 'bool';
@@ -87,4 +89,5 @@ EQUAL       : '=';
 IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
-VARIABLE : (LOWERCASE | UPPERCASE | '_')+ ;
+VARIABLE    : (LOWERCASE | UPPERCASE | '_')+ ;
+NEWLINE     : '\n';
