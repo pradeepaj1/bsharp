@@ -141,11 +141,42 @@ public class BSharpListener extends BSharpBaseListener {
     public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.enterConditionalStatement(ctx);
         intermediateCode.add("START_IF_ELSE_BLOCK");
+
+
+    }
+
+    @Override
+    public void enterIfBlock(BSharpParser.IfBlockContext ctx) {
+        super.enterIfBlock(ctx);
+        intermediateCode.add("IF_BLOCK_STARTS" + " " + ctx.children.get(2));
+        if(ctx.parent instanceof BSharpParser.IfBlockContext){
+            intermediateCode.add("CONDITION_CHECK" + " " + ctx.parent);
+        }
+    }
+
+    @Override
+    public void exitIfBlock(BSharpParser.IfBlockContext ctx) {
+        super.exitIfBlock(ctx);
+        intermediateCode.add("IF_BLOCK_ENDS");
+    }
+
+    @Override
+    public void enterElseBlock(BSharpParser.ElseBlockContext ctx) {
+        super.enterElseBlock(ctx);
+        intermediateCode.add("ELSE_BLOCK_STARTS");
+    }
+
+    @Override
+    public void exitElseBlock(BSharpParser.ElseBlockContext ctx) {
+        super.exitElseBlock(ctx);
+        intermediateCode.add("ELSE_BLOCK_ENDS");
+
     }
 
     @Override
     public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.exitConditionalStatement(ctx);
+
         intermediateCode.add("END_IF_ELSE_BLOCK");
     }
 
@@ -167,6 +198,9 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitElseBlock(BSharpParser.ElseBlockContext ctx) {
         super.exitElseBlock(ctx);
+
+        intermediateCode.add("STOP_IF_ELSE_BLOCK");
+
     }
 
     @Override
@@ -224,25 +258,25 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterWhileStatement(BSharpParser.WhileStatementContext ctx) {
         super.enterWhileStatement(ctx);
-        intermediateCode.add("BEGIN WHILE" + " " + ctx.children.get(2));
+        intermediateCode.add("BEGIN_WHILE_LOOP" + " " + ctx.children.get(2));
     }
 
     @Override
     public void exitWhileStatement(BSharpParser.WhileStatementContext ctx) {
         super.exitWhileStatement(ctx);
-        intermediateCode.add("END WHILE");
+        intermediateCode.add("END_WHILE_LOOP");
     }
 
     @Override
     public void enterRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.enterRelationalExpression(ctx);
-        intermediateCode.add("ENTER REL EX" + " " + ctx.children.get(0));
+        intermediateCode.add("ENTER_REL_EXPR" + " " + ctx.children.get(0));
     }
 
 
     @Override
     public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.exitRelationalExpression(ctx);
-        intermediateCode.add("EXIT REL EX");
+        intermediateCode.add("EXIT_REL_EXPR");
     }
 }
