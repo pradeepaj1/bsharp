@@ -61,6 +61,9 @@ public class BSharpListener extends BSharpBaseListener {
     public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.enterConditionalStatement(ctx);
         intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
+        if (ctx.children.get(5).getText().equals("else")) {
+            intermediateCode.add("BEGIN ELSE " + ctx.children.get(4));
+        }
     }
 
     @Override
@@ -72,7 +75,7 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.enterLogicalOperator(ctx);
-        intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
+        intermediateCode.add("COMPARE LOGI_OP" + " " + ctx.children.get(0));
         if (ctx.children.get(0).equals("&&")){
             intermediateCode.add("AND_CHECK");
         }
@@ -87,19 +90,19 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitLogicalOperator(BSharpParser.LogicalOperatorContext ctx) {
         super.exitLogicalOperator(ctx);
-        intermediateCode.add("EXIT OP");
+        intermediateCode.add("EXIT_LOGI_OP");
     }
 
     @Override
     public void enterRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
         super.enterRelationalOperator(ctx);
-        intermediateCode.add("COMPARE OP" + " " + ctx.children.get(0));
+        intermediateCode.add("COMPARE REL_OP" + " " + ctx.children.get(0));
     }
 
     @Override
     public void exitRelationalOperator(BSharpParser.RelationalOperatorContext ctx) {
         super.exitRelationalOperator(ctx);
-        intermediateCode.add("EXIT OP");
+        intermediateCode.add("EXIT REL_OP");
     }
 
     @Override
@@ -117,13 +120,26 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.enterRelationalExpression(ctx);
-        intermediateCode.add("ENTER REL" + " " + ctx.children.get(1));
+        intermediateCode.add("REL_CONDITION_BEGIN" + " " + ctx.children.get(0));
     }
 
 
     @Override
     public void exitRelationalExpression(BSharpParser.RelationalExpressionContext ctx) {
         super.exitRelationalExpression(ctx);
-        intermediateCode.add("EXIT REL");
+        intermediateCode.add("REL_CONDITION_END");
     }
+
+    @Override
+    public void enterStatements(BSharpParser.StatementsContext ctx) {
+        super.enterStatements(ctx);
+        intermediateCode.add("STATEMENTS_BEGIN");
+    }
+
+    @Override
+    public void exitStatements(BSharpParser.StatementsContext ctx) {
+        super.exitStatements(ctx);
+        intermediateCode.add("STATEMENTS_END");
+    }
+
 }

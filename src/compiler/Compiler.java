@@ -1,6 +1,5 @@
 package compiler;
 
-
 import main.antlr4.generatecode.BSharpLexer;
 import main.antlr4.generatecode.BSharpParser;
 import org.antlr.v4.runtime.CharStreams;
@@ -15,7 +14,7 @@ import java.io.IOException;
 
 public class Compiler {
     public static void main(String args[]) {
-        System.out.println("compilation started.. ");
+        System.out.println("Compilation Started.. ");
 
         BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile()));
         CommonTokenStream tokens = new CommonTokenStream(lexer);

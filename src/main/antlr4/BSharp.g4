@@ -54,7 +54,6 @@ relationalExpression				: arithmeticExpression
                                     | VARIABLE
                                     | DOUBLEVALUE;
 
-
 arithmeticExpression				: arithmeticExpression arithmeticOperator arithmeticExpression
                                     |'(' arithmeticExpression ')'
                                     | VARIABLE
@@ -89,8 +88,3 @@ IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
 VARIABLE : (LOWERCASE | UPPERCASE | '_')+ ;
-
-
-
-
-
