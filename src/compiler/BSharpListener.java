@@ -130,7 +130,7 @@ public class BSharpListener extends BSharpBaseListener {
             intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
         }
         else {
-            intermediateCode.add("TYPE "+ctx.children.get(0)+" "+ctx.children.get(2));
+            intermediateCode.add("TYPE "+ ctx.children.get(0)+" "+ctx.children.get(2));
             intermediateCode.add("MOV ACC " + ctx.children.get(4));
             intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
         }
@@ -177,7 +177,7 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void enterIfBlock(BSharpParser.IfBlockContext ctx) {
         super.enterIfBlock(ctx);
-        intermediateCode.add("IF_BLOCK_STARTS" + " " + ctx.children.get(2));
+        intermediateCode.add("IF_BLOCK_STARTS");
         intermediateCode.add("CONDITION_START");
     }
 
