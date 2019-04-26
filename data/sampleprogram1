@@ -1,8 +1,4 @@
-start
-double one=1.0;
-double two=20.0;
-double three=-15.0;
-three=one+two-three/three+one*three;
-write three;
-write "new___result";
-end
+a = 10.0;
+b = 20.0;
+c = a + b;
+write(c);

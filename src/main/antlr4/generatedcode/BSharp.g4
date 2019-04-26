@@ -5,20 +5,18 @@ grammar BSharp;
 *
 */
 
-bSharp 								: 'start' NEWLINE body 'end';
+bSharp 								: (declaration)* statements;
 
-body								: (declaration NEWLINE)* statements;
+declaration     					: DOUBLE VARIABLE SEMICOLON
+                                    | DOUBLE VARIABLE EQUAL DOUBLEVALUE SEMICOLON
+                                    | BOOL VARIABLE SEMICOLON
+                                    | BOOL VARIABLE EQUAL BOOLVALUE SEMICOLON;
 
-declaration     					: DOUBLE WHITESPACE VARIABLE SEMICOLON
-                                    | DOUBLE WHITESPACE VARIABLE EQUAL DOUBLEVALUE SEMICOLON
-                                    | BOOL WHITESPACE VARIABLE SEMICOLON
-                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE SEMICOLON;
+writeStatement						: WRITE'(' WORD ')' SEMICOLON
+                                    | WRITE'(' VARIABLE ')' SEMICOLON;
 
-writeStatement						: WRITE WHITESPACE WORD SEMICOLON
-                                    | WRITE WHITESPACE VARIABLE SEMICOLON;
-
-statements							: singleStatement NEWLINE
-                                    | singleStatement NEWLINE statements;
+statements							: singleStatement
+                                    | singleStatement statements;
 
 singleStatement						: assignmentStatement SEMICOLON
                                     | boolAssignment SEMICOLON
@@ -28,10 +26,10 @@ singleStatement						: assignmentStatement SEMICOLON
 
 assignmentStatement      			: VARIABLE EQUAL DOUBLEVALUE
                                     | VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE WHITESPACE VARIABLE EQUAL DOUBLEVALUE
-                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE WHITESPACE VARIABLE EQUAL arithmeticExpression
-                                    | BOOL WHITESPACE VARIABLE EQUAL booleanExpression
+                                    | DOUBLE VARIABLE EQUAL DOUBLEVALUE
+                                    | BOOL VARIABLE EQUAL BOOLVALUE
+                                    | DOUBLE VARIABLE EQUAL arithmeticExpression
+                                    | BOOL VARIABLE EQUAL booleanExpression
                                     | VARIABLE EQUAL arithmeticExpression;
 
 boolAssignment						: VARIABLE EQUAL BOOLVALUE
@@ -70,6 +68,7 @@ relationalOperator					: '<' | '>' | '<=' | '>=' | '==' | '!=';
 logicalOperator					    : '&&' | '||' | '!';
 
 
+
 /*
 * Lexer Rules.
 *
@@ -81,7 +80,6 @@ fragment TRUE		: 'True';
 fragment FALSE		: 'False';
 fragment MINUS      : '-';
 
-WHITESPACE  : ' ';
 WORD		: '"' (LOWERCASE|UPPERCASE|'_'| WHITESPACE)+ '"';
 WRITE       : 'write' ;
 DOUBLEVALUE	: MINUS? DIGIT+ '.' DIGIT+ ;
@@ -94,4 +92,25 @@ IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
 VARIABLE    : (LOWERCASE | UPPERCASE | '_')+ ;
-NEWLINE     : '\n';
+
+WHITESPACE
+    :   [ \t]+
+        -> skip
+    ;
+
+NEWLINE
+    :   (   '\r' '\n'?
+        |   '\n'
+        )
+        -> skip
+    ;
+
+BLOCKCOMMENT
+    :   '/*' .*? '*/'
+        -> skip
+    ;
+
+LINECOMMENT
+    :   '//' ~[\r\n]*
+        -> skip
+    ;

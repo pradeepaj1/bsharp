@@ -22,14 +22,12 @@ public class Compiler {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         BSharpParser parser = new BSharpParser(tokens);
         ParseTree tree = parser.bSharp();
+
         System.out.println(tree);
 
         ParseTreeWalker walker = new ParseTreeWalker();
         BSharpListener listener= new BSharpListener();
         walker.walk(listener, tree);
-
-        BSharpVisitor visitor = new BSharpVisitor();
-        visitor.visit(tree);
     }
 
 

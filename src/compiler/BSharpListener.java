@@ -3,6 +3,7 @@ package compiler;
 
 import generatedcode.BSharpBaseListener;
 import generatedcode.BSharpParser;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -18,12 +19,12 @@ public class BSharpListener extends BSharpBaseListener {
     public void enterDeclaration(BSharpParser.DeclarationContext ctx) {
         super.enterDeclaration(ctx);
 
-        intermediateCode.add("TYPE " + ctx.getChild(0) + " " + ctx.getChild(2));
+        intermediateCode.add("TYPE " + ctx.getChild(0) + " " + ctx.getChild(1));
 
         /* declaration with initialization */
-        if (ctx.children.size() > 4) {
-            intermediateCode.add("MOV ACC " + ctx.getChild(4));
-            intermediateCode.add("MOV " + ctx.getChild(2) + " " + "ACC");
+        if (ctx.children.size() > 3) {
+            intermediateCode.add("MOV ACC " + ctx.getChild(3));
+            intermediateCode.add("MOV " + ctx.getChild(1) + " " + "ACC");
         }
     }
 
@@ -39,7 +40,7 @@ public class BSharpListener extends BSharpBaseListener {
         intermediateCode.add("WRITE" + " " + ctx.getChild(2));
     }
 
-    boolean isTempRegUsed = false;
+    private boolean isTempRegUsed = false;
 
     @Override
     public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
@@ -101,28 +102,13 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
     @Override
-    public void enterAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
-        super.enterAssignmentStatement(ctx);
-//        if(ctx.children.size() == 3)
-//        {
-//            if (ctx.children.get(2) instanceof BSharpParser.ArithmeticExpressionContext){
-////                intermediateCode.add("MOV ACC " + ctx.children.get(2).getChild(0));
-////                intermediateCode.add("MOV " + ctx.children.get(0) + " " + "ACC");
-//            }
-//        }
-//        else
-//        {
-//            intermediateCode.add("TYPE "+ctx.children.get(0)+" "+ctx.children.get(2));
-//            intermediateCode.add("MOV ACC " + ctx.children.get(4));
-//            intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
-//        }
-
-    }
-
-    @Override
     public void exitAssignmentStatement(BSharpParser.AssignmentStatementContext ctx) {
         super.exitAssignmentStatement(ctx);
-        intermediateCode.add("MOV "+ ctx.children.get(0) + " ACC");
+        if (ctx.getChild(2) instanceof TerminalNodeImpl) {
+            intermediateCode.add("MOV "+ ctx.children.get(0) + " " + ctx.getChild(2));
+        } else {
+            intermediateCode.add("MOV "+ ctx.children.get(0) + " ACC");
+        }
     }
 
     @Override
@@ -154,13 +140,33 @@ public class BSharpListener extends BSharpBaseListener {
 
     public void enterConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.enterConditionalStatement(ctx);
-        intermediateCode.add("BEGIN IF" + " " + ctx.children.get(2));
+        intermediateCode.add("START_IF_ELSE_BLOCK");
     }
 
     @Override
     public void exitConditionalStatement(BSharpParser.ConditionalStatementContext ctx) {
         super.exitConditionalStatement(ctx);
-        intermediateCode.add("END IF");
+        intermediateCode.add("END_IF_ELSE_BLOCK");
+    }
+
+    @Override
+    public void enterIfBlock(BSharpParser.IfBlockContext ctx) {
+        super.enterIfBlock(ctx);
+    }
+
+    @Override
+    public void exitIfBlock(BSharpParser.IfBlockContext ctx) {
+        super.exitIfBlock(ctx);
+    }
+
+    @Override
+    public void enterElseBlock(BSharpParser.ElseBlockContext ctx) {
+        super.enterElseBlock(ctx);
+    }
+
+    @Override
+    public void exitElseBlock(BSharpParser.ElseBlockContext ctx) {
+        super.exitElseBlock(ctx);
     }
 
     @Override
