@@ -4,12 +4,23 @@ import bSharp.BSharpBaseListener;
 import bSharp.BSharpParser;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.io.FileUtils;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BSharpListener extends BSharpBaseListener {
+    String fileName;
+    String filePath;
+    public BSharpListener(String path)
+    {
+     filePath=path;
+     int fileIndex = path.lastIndexOf("/");
+     fileName = path.substring(fileIndex+1);
+
+    }
+
+
 
     private static List<String> intermediateCode = new ArrayList<String>();
     private boolean isTempRegUsed = false;
@@ -21,10 +32,12 @@ public class BSharpListener extends BSharpBaseListener {
 
         intermediateCode.add("TYPE " + ctx.getChild(0) + " " + ctx.getChild(1));
 
+
         /* declaration with initialization */
         if (ctx.children.size() > 3) {
             intermediateCode.add("MOV ACC " + ctx.getChild(3));
             intermediateCode.add("MOV " + ctx.getChild(1) + " " + "ACC");
+
         }
     }
 
@@ -38,6 +51,7 @@ public class BSharpListener extends BSharpBaseListener {
     public void enterWriteStatement(BSharpParser.WriteStatementContext ctx) {
         super.enterWriteStatement(ctx);
         intermediateCode.add("WRITE" + " " + ctx.getChild(2));
+
     }
 
     @Override
@@ -53,14 +67,18 @@ public class BSharpListener extends BSharpBaseListener {
             String operator = getOperatorIntermediateCode(ctx.op.getText());
             intermediateCode.add(operator + " ACC " + left + " " + right);
 
+
             if (!isTempRegUsed) {
                 intermediateCode.add("MOV "+ "X " + "ACC");
+
                 isTempRegUsed = true;
             } else {
                 if (left.equals("X") && !right.equals("Y")) {
                     intermediateCode.add("MOV "+ "X " + "ACC");
+
                 } else {
                     intermediateCode.add("MOV "+ "Y " + "ACC");
+
                 }
                 isTempRegUsed = false;
             }
@@ -93,7 +111,16 @@ public class BSharpListener extends BSharpBaseListener {
     public void exitBSharp(BSharpParser.BSharpContext ctx) {
         super.exitBSharp(ctx);
         try {
-            FileUtils.writeLines(new File("data/s.intermediate"), intermediateCode);
+            FileUtils.writeLines(new File(filePath+".intermediate"), intermediateCode);
+            if(intermediateCode.size()>0)
+            {
+                System.out.println("********  INTERMEDIATE CODE ********");
+                for(int i=0;i<intermediateCode.size();i++)
+                {
+                    System.out.println(intermediateCode.get(i));
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -290,4 +317,7 @@ public class BSharpListener extends BSharpBaseListener {
         super.exitWhileStatement(ctx);
         intermediateCode.add("END_WHILE");
     }
+
+
+
 }
