@@ -1,0 +1,44 @@
+TYPE double input_one
+MOV ACC 20.0
+MOV input_one ACC
+TYPE double input_two
+MOV ACC -15.476
+MOV input_two ACC
+TYPE double result_one
+TYPE double result_two
+START_IF_ELSE_BLOCK
+IF_BLOCK_STARTS
+CONDITION_START
+MOV ACC input_one
+MOV ACC 0.0
+LESS_THAN ACC input_one 0.0
+MOV X ACC
+END_CONDITION
+MUL ACC input_one -1.0
+MOV X ACC
+MOV result_one ACC
+IF_BLOCK_ENDS
+ELSE_BLOCK_STARTS
+MOV result_one ACC
+ELSE_BLOCK_ENDS
+END_IF_ELSE_BLOCK
+START_IF_ELSE_BLOCK
+IF_BLOCK_STARTS
+CONDITION_START
+MOV ACC input_two
+MOV ACC 0.0
+LESS_THAN ACC input_two 0.0
+MOV X ACC
+END_CONDITION
+MUL ACC input_two -1.0
+MOV X ACC
+MOV result_two ACC
+IF_BLOCK_ENDS
+ELSE_BLOCK_STARTS
+MOV result_two ACC
+ELSE_BLOCK_ENDS
+END_IF_ELSE_BLOCK
+WRITE "Absolute value of input_one is "
+WRITE result_one
+WRITE "Absolute value of input_two is "
+WRITE result_two

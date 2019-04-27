@@ -1,0 +1,31 @@
+TYPE double dividend
+MOV ACC 5.5
+MOV dividend ACC
+TYPE double divisor
+MOV ACC 2.5
+MOV divisor ACC
+TYPE double quotient
+MOV ACC 0.0
+MOV quotient ACC
+TYPE double remainder
+MOV ACC 0.0
+MOV remainder ACC
+BEGIN_WHILE
+BEGIN_CONDITION
+MOV ACC dividend
+MOV ACC divisor
+GREATER_THAN_EQUAL_TO ACC dividend divisor
+MOV X ACC
+END_CONDITION
+ADD ACC quotient 1.0
+MOV X ACC
+MOV quotient ACC
+SUB ACC dividend divisor
+MOV X ACC
+MOV dividend ACC
+END_WHILE
+MOV remainder ACC
+WRITE "Quotient is "
+WRITE quotient
+WRITE "Remainder is "
+WRITE remainder

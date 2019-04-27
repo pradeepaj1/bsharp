@@ -40,7 +40,7 @@ public class Runner {
         if (args.length > 0) {
             intermediateCodeFilePath = args[0];
         } else {
-            intermediateCodeFilePath = "data/defaultprogram.bsharp";
+            intermediateCodeFilePath = "data/DefaultProgram/defaultprogram.bsharp";
         }
         run(intermediateCodeFilePath);
     }

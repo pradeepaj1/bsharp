@@ -1,0 +1,22 @@
+TYPE double input
+MOV ACC 8.0
+MOV input ACC
+TYPE double factorial
+MOV ACC 1.0
+MOV factorial ACC
+BEGIN_WHILE
+BEGIN_CONDITION
+MOV ACC input
+MOV ACC 0.0
+GREATER_THAN ACC input 0.0
+MOV X ACC
+END_CONDITION
+MUL ACC factorial input
+MOV X ACC
+MOV factorial ACC
+SUB ACC input 1.0
+MOV X ACC
+MOV input ACC
+END_WHILE
+WRITE "Factorial result is "
+WRITE factorial
