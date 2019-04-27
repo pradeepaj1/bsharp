@@ -40,13 +40,13 @@ public class Runner {
         if (args.length > 0) {
             intermediateCodeFilePath = args[0];
         } else {
-            intermediateCodeFilePath = "data/DefaultProgram/defaultprogram.bsharp";
+            intermediateCodeFilePath = "data/DefaultProgram/defaultprogram.bsharp.intermediate";
         }
         run(intermediateCodeFilePath);
     }
 
     private static void run(String intermediateCodeFilePath) {
-        code = readProgramFromFile(intermediateCodeFilePath+".intermediate");
+        code = readProgramFromFile(intermediateCodeFilePath);
         System.out.println("\n\n******** PROGRAM OUTPUT ********");
         while (programCounter < code.size()) {
             evaluateLine(code.get(programCounter));
