@@ -1,12 +1,12 @@
 # SER502-Spring2019-Team16
 
 
-#####System: 
+##### System: 
     
         Windows, MacOS
 
 
-#####Tools used: 
+##### Tools used: 
 
     antlr4.7 - To generate the parser
     
@@ -18,7 +18,7 @@
 
 
 
-#####Directions to build the project: 
+##### Directions to build the project: 
 
     1. Navigate to the project root folder(SER502-Spring2019-Team16) in terminal
     2. Execute the command :  mvn clean package
@@ -27,7 +27,7 @@
 
 
 
-#####Directions to compile and run the bSharp source code:
+##### Directions to compile and run the bSharp source code:
     
 
      1. Navigate to the project root folder(SER502-Spring2019-Team16) in terminal
@@ -51,6 +51,6 @@
 
 
 
-#####Link to the YouTube video: 
+##### Link to the YouTube video: 
 
     NONE
