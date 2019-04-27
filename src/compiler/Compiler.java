@@ -7,37 +7,31 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.apache.commons.io.FileUtils;
-import runtime.Runner;
-
 import java.io.File;
 import java.io.IOException;
 
-
 public class Compiler {
+
     public static void main(String args[]) {
-        String path;
+        String sourceCodeFilePath;
         if(args.length==0) {
-            path = "data/defaultprogram.bsharp";
+            sourceCodeFilePath = "data/defaultprogram.bsharp";
         }
         else {
-            path = args[0];
+            sourceCodeFilePath = args[0];
         }
+        compile(sourceCodeFilePath);
+    }
 
-        System.out.println("compilation started... ");
-        BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile(path)));
+    private static void compile(String sourceCodeFilePath) {
+        System.out.println("Compilation Started...");
+        BSharpLexer lexer = new BSharpLexer(CharStreams.fromString(readProgramFromFile(sourceCodeFilePath)));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         BSharpParser parser = new BSharpParser(tokens);
         ParseTree tree = parser.bSharp();
         ParseTreeWalker walker = new ParseTreeWalker();
-        BSharpListener listener = new BSharpListener(path);
+        BSharpListener listener = new BSharpListener(sourceCodeFilePath);
         walker.walk(listener, tree);
-
-        Runner.run(path);
-    }
-
-
-    private void compile() {
-
     }
 
     private static String readProgramFromFile(String path) {
@@ -46,7 +40,7 @@ public class Compiler {
             program = FileUtils.readFileToString(
                     new File(path), "UTF-8");
         } catch (IOException e) {
-            System.out.println("FILE NOT FOUND...PLEASE GIVE A CORRECT FILE PATH");
+            System.out.println("Error in accessing the file.");
         }
         return program;
     }

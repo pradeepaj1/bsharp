@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e012bde4-da5b-431d-9710-423e7ae891fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sampleprogram1" beforeDir="false" afterPath="$PROJECT_DIR$/data/defaultprogram.bsharp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/defaultprogram.bsharp" beforeDir="false" afterPath="$PROJECT_DIR$/data/defaultprogram.bsharp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/defaultprogram.bsharp.intermediate" beforeDir="false" afterPath="$PROJECT_DIR$/data/defaultprogram.bsharp.intermediate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/s.intermediate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/BSharpListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/BSharpListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/runtime/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runtime/Runner.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,20 +28,20 @@
     <session id="541029519">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="bsharp" value="28" />
-          <entry key="g4" value="48" />
-          <entry key="intermediate" value="33" />
-          <entry key="java" value="1814" />
+          <entry key="bsharp" value="1581" />
+          <entry key="g4" value="54" />
+          <entry key="intermediate" value="44" />
+          <entry key="java" value="2599" />
           <entry key="sampleprogram1" value="631" />
-          <entry key="xml" value="17" />
+          <entry key="xml" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ANTLR v4 grammar file" value="48" />
-          <entry key="JAVA" value="1814" />
-          <entry key="PLAIN_TEXT" value="692" />
-          <entry key="XML" value="17" />
+          <entry key="ANTLR v4 grammar file" value="54" />
+          <entry key="JAVA" value="2599" />
+          <entry key="PLAIN_TEXT" value="2256" />
+          <entry key="XML" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,7 +49,7 @@
           <entry key="class" value="1" />
           <entry key="g4" value="1" />
           <entry key="intermediate" value="2" />
-          <entry key="java" value="4" />
+          <entry key="java" value="6" />
           <entry key="sampleprogram1" value="1" />
           <entry key="tokens" value="1" />
         </counts>
@@ -54,8 +58,15 @@
         <counts>
           <entry key="ANTLR v4 grammar file" value="1" />
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="4" />
+          <entry key="JAVA" value="6" />
           <entry key="PLAIN_TEXT" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.6" value="3" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
     </session>
@@ -65,15 +76,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/BSharpListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#570#578#0" expanded="true" />
-                <element signature="e#1200#1201#0" expanded="true" />
-                <element signature="e#1242#1243#0" expanded="true" />
-                <element signature="e#5562#5563#0" expanded="true" />
-                <element signature="e#5607#5608#0" expanded="true" />
+                <element signature="e#526#527#0" expanded="true" />
+                <element signature="e#555#556#0" expanded="true" />
+                <element signature="method#enterDeclaration#0;class#BSharpListener#0" />
+                <element signature="method#enterWriteStatement#0;class#BSharpListener#0" />
+                <element signature="method#exitArithmeticExpression#0;class#BSharpListener#0" />
+                <element signature="method#exitBSharp#0;class#BSharpListener#0" />
+                <element signature="method#exitAssignmentStatement#0;class#BSharpListener#0" />
+                <element signature="method#enterBlockOfStatements#0;class#BSharpListener#0" />
+                <element signature="method#enterBoolAssignment#0;class#BSharpListener#0" />
+                <element signature="method#exitLogicalExpression#0;class#BSharpListener#0" />
+                <element signature="method#enterConditionalStatement#0;class#BSharpListener#0" />
+                <element signature="method#enterIfBlock#0;class#BSharpListener#0" />
+                <element signature="method#exitIfBlock#0;class#BSharpListener#0" />
+                <element signature="method#enterElseBlock#0;class#BSharpListener#0" />
+                <element signature="method#exitElseBlock#0;class#BSharpListener#0" />
+                <element signature="method#exitConditionalStatement#0;class#BSharpListener#0" />
+                <element signature="method#exitRelationalExpression#0;class#BSharpListener#0" />
+                <element signature="method#enterWhileStatement#0;class#BSharpListener#0" />
+                <element signature="method#exitWhileStatement#0;class#BSharpListener#0" />
+                <element signature="method#getLogicalOperatorIntermediateCode#0;class#BSharpListener#0" />
+                <element signature="method#getRelationalOperatorIntermediateCode#0;class#BSharpListener#0" />
+                <element signature="method#updateRegisters#0;class#BSharpListener#0" />
+                <element signature="method#getOperatorIntermediateCode#0;class#BSharpListener#0" />
               </folding>
             </state>
           </provider>
@@ -82,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/bSharp/BSharpParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="1238" selection-start-line="1238" selection-end-line="1238" />
+            <state relative-caret-position="422">
+              <caret line="734" column="24" selection-start-line="734" selection-start-column="24" selection-end-line="734" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -91,10 +120,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/runtime/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="15" column="74" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="74" />
+            <state relative-caret-position="365">
+              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#967#983#0" expanded="true" />
+                <element signature="e#1061#1079#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+            <state relative-caret-position="15">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -121,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+            <state relative-caret-position="210">
+              <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,19 +162,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/s.intermediate">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
+            <state relative-caret-position="205">
+              <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -151,15 +173,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/defaultprogram.bsharp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="7" />
+            <state relative-caret-position="272">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/defaultprogram.bsharp.intermediate">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -173,9 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>arithmetic</find>
-      <find>enterarithme</find>
-      <find>exitarithmetic</find>
       <find>writestate</find>
       <find>entercond</find>
       <find>enter</find>
@@ -195,7 +218,6 @@
       <find>GREATER_THAN</find>
       <find>lesst</find>
       <find>system.</find>
-      <find>exitar</find>
       <find>Y</find>
       <find>system</find>
       <find>boolAssignment</find>
@@ -203,6 +225,10 @@
       <find>printfinal</find>
       <find>exitbsh</find>
       <find>display</find>
+      <find>conditiona</find>
+      <find>VARIABLE</find>
+      <find>exitar</find>
+      <find>WORD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -223,13 +249,14 @@
         <option value="$PROJECT_DIR$/src/main/antlr4/BSharp.g4" />
         <option value="$PROJECT_DIR$/src/compiler/BSharpVisitor.java" />
         <option value="$PROJECT_DIR$/src/main/antlr4/generatedcode/BSharp.g4" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/data/s.intermediate" />
         <option value="$PROJECT_DIR$/data/sampleprogram1" />
-        <option value="$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4" />
-        <option value="$PROJECT_DIR$/src/compiler/Compiler.java" />
-        <option value="$PROJECT_DIR$/src/compiler/BSharpListener.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/data/defaultprogram.bsharp.intermediate" />
         <option value="$PROJECT_DIR$/data/defaultprogram.bsharp" />
+        <option value="$PROJECT_DIR$/src/compiler/BSharpListener.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Compiler.java" />
+        <option value="$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4" />
         <option value="$PROJECT_DIR$/src/runtime/Runner.java" />
       </list>
     </option>
@@ -264,8 +291,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="809" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -313,7 +341,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -330,12 +357,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556336010829" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556399594186" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -369,7 +397,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.do">
+  <component name="RunManager" selected="Application.Run">
     <configuration name="Run" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="runtime.Runner" />
       <module name="SER502-Spring2019-Team16" />
@@ -377,7 +405,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="do" type="Application" factoryName="Application">
+    <configuration name="compile" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="compiler.Compiler" />
       <module name="SER502-Spring2019-Team16" />
       <method v="2">
@@ -385,7 +413,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.do" />
+      <item itemvalue="Application.compile" />
       <item itemvalue="Application.Run" />
     </list>
   </component>
@@ -411,11 +439,14 @@
       <workItem from="1556067025239" duration="9450000" />
       <workItem from="1556223934735" duration="13501000" />
       <workItem from="1556257742437" duration="1750000" />
+      <workItem from="1556349334898" duration="45000" />
+      <workItem from="1556350438478" duration="474000" />
+      <workItem from="1556351425346" duration="10131000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90868000" />
+    <option name="totallyTimeSpent" value="101760000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -430,7 +461,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3311874" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25250357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -440,14 +471,14 @@
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.41422594" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.28554216" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.43855423" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.21445782" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39759037" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32914925" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.24546723" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.24457832" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.33493975" />
       <window_info anchor="bottom" id="Tool Output" order="13" weight="0.32775453" />
@@ -461,7 +492,7 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" visible="true" weight="0.15450644" />
+      <window_info anchor="right" id="Maven Projects" order="9" visible="true" weight="0.0028612304" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14089069" />
@@ -501,6 +532,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -509,12 +543,6 @@
           <line>9</line>
           <properties />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/runtime/Runner.java</url>
-          <line>94</line>
-          <properties />
-          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -619,6 +647,17 @@
     <entry file="file://$PROJECT_DIR$/doc/Contributions.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/generatedcode/BSharpParser.java" />
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/BSharp.tokens">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/bSharp/BSharpBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.7/antlr4-runtime-4.7.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -626,79 +665,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/generatedcode/BSharpParser.java" />
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/BSharp.tokens">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/data/s.intermediate">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
+        <state relative-caret-position="205">
+          <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/defaultprogram.bsharp.intermediate">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/defaultprogram.bsharp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/target/generated-sources/antlr4/bSharp/BSharpParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="1238" selection-start-line="1238" selection-end-line="1238" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/s.intermediate">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/defaultprogram.bsharp.intermediate">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/defaultprogram.bsharp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="40" column="6" lean-forward="true" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="7" />
+        <state relative-caret-position="422">
+          <caret line="734" column="24" selection-start-line="734" selection-start-column="24" selection-end-line="734" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/BSharpListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#570#578#0" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="e#1242#1243#0" expanded="true" />
-            <element signature="e#5562#5563#0" expanded="true" />
-            <element signature="e#5607#5608#0" expanded="true" />
+            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="method#enterDeclaration#0;class#BSharpListener#0" />
+            <element signature="method#enterWriteStatement#0;class#BSharpListener#0" />
+            <element signature="method#exitArithmeticExpression#0;class#BSharpListener#0" />
+            <element signature="method#exitBSharp#0;class#BSharpListener#0" />
+            <element signature="method#exitAssignmentStatement#0;class#BSharpListener#0" />
+            <element signature="method#enterBlockOfStatements#0;class#BSharpListener#0" />
+            <element signature="method#enterBoolAssignment#0;class#BSharpListener#0" />
+            <element signature="method#exitLogicalExpression#0;class#BSharpListener#0" />
+            <element signature="method#enterConditionalStatement#0;class#BSharpListener#0" />
+            <element signature="method#enterIfBlock#0;class#BSharpListener#0" />
+            <element signature="method#exitIfBlock#0;class#BSharpListener#0" />
+            <element signature="method#enterElseBlock#0;class#BSharpListener#0" />
+            <element signature="method#exitElseBlock#0;class#BSharpListener#0" />
+            <element signature="method#exitConditionalStatement#0;class#BSharpListener#0" />
+            <element signature="method#exitRelationalExpression#0;class#BSharpListener#0" />
+            <element signature="method#enterWhileStatement#0;class#BSharpListener#0" />
+            <element signature="method#exitWhileStatement#0;class#BSharpListener#0" />
+            <element signature="method#getLogicalOperatorIntermediateCode#0;class#BSharpListener#0" />
+            <element signature="method#getRelationalOperatorIntermediateCode#0;class#BSharpListener#0" />
+            <element signature="method#updateRegisters#0;class#BSharpListener#0" />
+            <element signature="method#getOperatorIntermediateCode#0;class#BSharpListener#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+        <state relative-caret-position="210">
+          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/bSharp/BSharp.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="15" column="74" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="74" />
+        <state relative-caret-position="365">
+          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#967#983#0" expanded="true" />
+            <element signature="e#1061#1079#0" expanded="true" />
           </folding>
         </state>
       </provider>
