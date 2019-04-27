@@ -8,11 +8,44 @@ import java.util.List;
 
 public class Runner {
 
+    private static HashMap<String, Integer> opcodeOperationMap = new HashMap<String, Integer>(){
+        {
+            put("TYPE", 1);
+            put("MOV", 2);
+            put("WRITE", 3);
+            put("ADD", 4);
+            put("SUB", 5);
+            put("MUL", 6);
+            put("DIV", 7);
+            put("LESS_THAN", 8);
+            put("GREATER_THAN", 9);
+            put("LESS_THAN_EQUAL_TO", 10);
+            put("GREATER_THAN_EQUAL_TO", 11);
+            put("DOUBLE_EQUAL_TO", 12);
+            put("NOT_EQUAL_TO", 13);
+            put("AND", 14);
+            put("OR", 15);
+            put("START_IF_ELSE_BLOCK", 16);
+            put("BEGIN_WHILE", 17);
+        }
+    };
+    private static HashMap<String, Object> variableValueMap = new HashMap<String, Object>();
+    private static HashMap<String, Class<?>> variableTypeMap = new HashMap<String, Class<?>>();
     private static Object acc;
     private static int programCounter = 0;
     private static List<String> code;
 
-    public static void run(String intermediateCodeFilePath) {
+    public static void main(String args[]) {
+        String intermediateCodeFilePath;
+        if (args.length > 0) {
+            intermediateCodeFilePath = args[0];
+        } else {
+            intermediateCodeFilePath = "data/defaultprogram.bsharp";
+        }
+        run(intermediateCodeFilePath);
+    }
+
+    private static void run(String intermediateCodeFilePath) {
         code = readProgramFromFile(intermediateCodeFilePath+".intermediate");
         System.out.println("\n\n******** PROGRAM OUTPUT ********");
         while (programCounter < code.size()) {
@@ -20,12 +53,10 @@ public class Runner {
             programCounter++;
         }
         System.out.println("******** PROGRAM OUTPUT ********\n\n");
-
         printFinalEnvironment();
     }
 
     private static void printFinalEnvironment() {
-
         System.out.println("********  FINAL ENV ********");
         for (HashMap.Entry entry: variableValueMap.entrySet()) {
 
@@ -45,40 +76,6 @@ public class Runner {
         return program;
     }
 
-    private static HashMap<String, Integer> opcodeOperationMap = new HashMap<String, Integer>(){
-        {
-            put("TYPE", 1);
-            put("MOV", 2);
-            put("WRITE", 3);
-            put("ADD", 4);
-            put("SUB", 5);
-            put("MUL", 6);
-            put("DIV", 7);
-            put("LESS_THAN", 8);
-            put("GREATER_THAN", 9);
-            put("LESS_THAN_EQUAL_TO", 10);
-            put("GREATER_THAN_EQUAL_TO", 11);
-            put("DOUBLE_EQUAL_TO", 12);
-            put("NOT_EQUAL_TO", 13);
-            put("AND", 14);
-            put("OR", 15);
-            put("NOT", 16);
-            put("START_IF_ELSE_BLOCK", 17);
-            put("BEGIN_WHILE", 18);
-        }
-    };
-
-    private static HashMap<String, Object> variableValueMap = new HashMap<String, Object>(){
-        {
-
-        }
-    };
-    private static HashMap<String, Class<?>> variableTypeMap = new HashMap<String, Class<?>>(){
-        {
-
-        }
-    };
-
     private static void evaluateLine(String line) {
         String[] splits = line.split(" ");
         Integer opcode = opcodeOperationMap.get(splits[0]);
@@ -91,14 +88,14 @@ public class Runner {
                 handleMove(splits[2], splits[1]);
                 break;
             case 3:
-                String displayResult = "";
+                StringBuilder displayResult = new StringBuilder();
                 if (splits[1].contains("\"")) {
                     for (int i = 1; i < splits.length; i++) {
-                        displayResult += splits[i] + " ";
+                        displayResult.append(splits[i]).append(" ");
                     }
-                    displayResult = displayResult.substring(1, displayResult.length()-2);
+                    displayResult = new StringBuilder(displayResult.substring(1, displayResult.length() - 2));
                 } else {
-                    displayResult = getVariableValue(splits[1]).toString();
+                    displayResult = new StringBuilder(getVariableValue(splits[1]).toString());
                 }
                 System.out.println(displayResult);
                 break;
@@ -150,20 +147,15 @@ public class Runner {
                 boolean orResult = (Boolean) getVariableValue(splits[2]) || (Boolean) getVariableValue(splits[3]);
                 setVariableValue(splits[1], orResult);
                 break;
-//            case 16:
-//                boolean notResult = !((Boolean) getVariableValue(splits[2]) && (Boolean) getVariableValue(splits[3]));
-//                setVariableValue(splits[1], notResult);
-//                break;
-            case 17:
+            case 16:
                 ++programCounter;
                 processIfElseBlock();
                 break;
-            case 18:
+            case 17:
                 ++programCounter;
                 processWhileLoop();
             default:
                 break;
-
         }
     }
 
@@ -205,7 +197,7 @@ public class Runner {
     }
 
     private static void handleType(String var, String type) {
-        Class<?> variableType = null;
+        Class<?> variableType;
         if (type.equals("bool")) {
             variableType = Boolean.class;
         } else {
@@ -262,7 +254,6 @@ public class Runner {
             evaluateLine(code.get(programCounter));
             programCounter++;
         }
-
         return (Boolean) acc;
     }
 

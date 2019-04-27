@@ -5,7 +5,7 @@ grammar BSharp;
 *
 */
 
-bSharp 								: (declaration)* statements;
+bSharp 								: (declaration)* (statements)*;
 
 declaration     					: DOUBLE VARIABLE SEMICOLON
                                     | DOUBLE VARIABLE EQUAL DOUBLEVALUE SEMICOLON
@@ -61,7 +61,7 @@ arithmeticExpression				: left=arithmeticExpression op=('*' | '/' ) right=arithm
 
 relationalOperator					: '<' | '>' | '<=' | '>=' | '==' | '!=';
 
-logicalOperator					    : '&&' | '||' | '!';
+logicalOperator					    : '&&' | '||';
 
 
 
@@ -87,7 +87,7 @@ EQUAL       : '=';
 IF          : 'if';
 ELSE        : 'else';
 WHILE       : 'while';
-VARIABLE    : (LOWERCASE | UPPERCASE | '_')+ ;
+VARIABLE    : (LOWERCASE | '_')+ ;
 
 WHITESPACE
     :   [ \t]+

@@ -1,45 +1,15 @@
-TYPE double num
-MOV ACC 63.0
-MOV num ACC
-TYPE double q
+TYPE double celsius
+MOV ACC 45.0
+MOV celsius ACC
+TYPE double fahrenheit
 MOV ACC 0.0
-MOV q ACC
-TYPE double r
-MOV ACC 0.0
-MOV r ACC
-BEGIN_WHILE
-BEGIN_CONDITION
-MOV ACC num
-MOV ACC 7.0
-GREATER_THAN_EQUAL_TO ACC num 7.0
+MOV fahrenheit ACC
+MUL ACC celsius 9.0
 MOV X ACC
-END_CONDITION
-MOV ACC q
-MOV ACC 1.0
-ADD ACC q 1.0
+DIV ACC X 5.0
 MOV X ACC
-MOV q ACC
-MOV ACC num
-MOV ACC 7.0
-SUB ACC num 7.0
+ADD ACC X 32.0
 MOV X ACC
-MOV num ACC
-END_WHILE
-MOV ACC num
-MOV r ACC
-WRITE q
-WRITE r
-START_IF_ELSE_BLOCK
-IF_BLOCK_STARTS
-CONDITION_START
-MOV ACC r
-MOV ACC 0.0
-GREATER_THAN ACC r 0.0
-MOV X ACC
-END_CONDITION
-WRITE "it is not completely divisible"
-IF_BLOCK_ENDS
-ELSE_BLOCK_STARTS
-WRITE "it is completely divisible"
-ELSE_BLOCK_ENDS
-END_IF_ELSE_BLOCK
+MOV fahrenheit ACC
+WRITE "Temperature in fahrenheit is "
+WRITE fahrenheit

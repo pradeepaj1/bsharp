@@ -1,43 +1,102 @@
 
 
 
+/*double a = 6.0;
+ double b = 9.0;
+ double c = 9.8;
+ double d = 6.88;
+ double h = 0.833;
 
-double num = 63.0;
+double e;
 
-double q = 0.0;
+e = a-b/c+d*h;
 
-double r = 0.0;
+write(e);*/
 
-while (num >= 7.0) {
-    q = q + 1.0;
-    num = num - 7.0;
+
+double celsius = 45.0;
+double fahrenheit = 0.0;
+
+fahrenheit = celsius*9.0/5.0+32.0;
+
+write("Temperature in fahrenheit is ");
+write(fahrenheit);
+
+
+/*
+// Factorial of a number
+
+/*
+In mathematics, the factorial of a positive integer n, denoted by n!,
+is the product of all positive integers less than or equal to n.
+In our language, since we are supporting only double datatype, the program output will be correct only
+if we represent integer values as double (Ex: 1 as 1.0).
+*/
+
+// input to the program
+double input = 8.0;
+
+// output variables
+double factorial = 1.0;
+
+while (input > 0.0) {
+    factorial = factorial * input;
+    input = input - 1.0;
 }
 
-r = num;
+write("Factorial result is "); write(factorial);
 
-write(q);
-write(r);
+*/
 
-if (r > 0.0) {
-    write("it is not completely divisible");
-} else {
-    write("it is completely divisible");
-}
 
 /*
 
+// Find absolute value of a number
 
+double input_one = 20.0;
+double input_two = -15.476;
+double result_one;
+double result_two;
 
-if ( one == two) {
-    write ("equals ");
+if (input_one < 0.0) {
+    result_one = input_one * -1.0;
 } else {
-    if (two == one) {
-        write ("yes da");
-    } else {
-        write ("oh yeah");
-    }
-    write ("podi lusu");
-}*/
+    result_one = input_one;
+}
+
+
+if (input_two < 0.0) {
+    result_two = input_two * -1.0;
+} else {
+    result_two = input_two;
+}
+
+write("Absolute value of input_one is "); write(result_one);
+write("Absolute value of input_two is "); write(result_two);
+
+*/
+
+/*
+// Find quotient and remainder for two intergers
+
+// input to the program
+double dividend = 5.5;
+double divisor = 2.5;
+
+// output variables
+double quotient = 0.0;
+double remainder = 0.0;
+
+while (dividend >= divisor) {
+    quotient = quotient + 1.0;
+    dividend = dividend - divisor;
+}
+remainder = dividend;
+
+write("Quotient is "); write(quotient);
+write("Remainder is "); write(remainder);
+*/
+
 
 /* double one = 10.0;
 
