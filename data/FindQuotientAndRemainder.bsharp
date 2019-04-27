@@ -1,0 +1,18 @@
+// Find quotient and remainder for two integers
+
+// input to the program
+double dividend = 5.5;
+double divisor = 2.5;
+
+// output variables
+double quotient = 0.0;
+double remainder = 0.0;
+
+while (dividend >= divisor) {
+    quotient = quotient + 1.0;
+    dividend = dividend - divisor;
+}
+remainder = dividend;
+
+write("Quotient is "); write(quotient);
+write("Remainder is "); write(remainder);
