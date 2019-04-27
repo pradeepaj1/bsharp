@@ -6,6 +6,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The {@code Runner} class executes the bSharp language intermediate code
+ * and prints the final environment as output
+ * @author Pradeep Ambalam Jawaharlal
+ * @version 1.0
+ * created on Mar 1, 2019
+ */
+
 public class Runner {
 
     private static HashMap<String, Integer> opcodeOperationMap = new HashMap<String, Integer>(){
@@ -247,7 +255,6 @@ public class Runner {
             programCounter++;
         }
     }
-
 
     private static boolean evaluateExpression(int programCounter) {
         while (!code.get(programCounter).split(" ")[0].equals("END_CONDITION")) {
