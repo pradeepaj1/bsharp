@@ -10,32 +10,35 @@ public class Runner {
 
     private static Object acc;
     private static int programCounter = 0;
-    private static List<String> code = readProgramFromFile();
+    private static List<String> code;
 
-
-    public static void main(String args[]) {
-       run("");
-    }
-
-    private static void run(String intermediateCodeFilePath) {
+    public static void run(String intermediateCodeFilePath) {
+        code = readProgramFromFile(intermediateCodeFilePath+".intermediate");
+        System.out.println("\n\n******** PROGRAM OUTPUT ********");
         while (programCounter < code.size()) {
             evaluateLine(code.get(programCounter));
             programCounter++;
         }
+        System.out.println("******** PROGRAM OUTPUT ********\n\n");
+
         printFinalEnvironment();
     }
 
     private static void printFinalEnvironment() {
+
+        System.out.println("********  FINAL ENV ********");
         for (HashMap.Entry entry: variableValueMap.entrySet()) {
-            System.out.println(entry.getKey()+ "---" + entry.getValue());
+
+            System.out.println(entry.getKey()+ "\t\t-->\t\t" + entry.getValue());
         }
+        System.out.println("********  FINAL ENV ********");
     }
 
-    private static List<String> readProgramFromFile() {
+    private static List<String> readProgramFromFile(String filepath) {
         List<String> program = null;
         try {
             program = FileUtils.readLines(
-                    new File("data/s.intermediate"), "UTF-8");
+                    new File(filepath), "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }

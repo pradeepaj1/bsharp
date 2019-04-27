@@ -122,6 +122,7 @@ public class BSharpListener extends BSharpBaseListener {
                 {
                     System.out.println(intermediateCode.get(i));
                 }
+                System.out.println("********  INTERMEDIATE CODE ********");
             }
 
         } catch (IOException e) {

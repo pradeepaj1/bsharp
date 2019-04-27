@@ -1,5 +1,29 @@
 
 
+
+
+double num = 63.0;
+
+double q = 0.0;
+
+double r = 0.0;
+
+while (num >= 7.0) {
+    q = q + 1.0;
+    num = num - 7.0;
+}
+
+r = num;
+
+write(q);
+write(r);
+
+if (r > 0.0) {
+    write("it is not completely divisible");
+} else {
+    write("it is completely divisible");
+}
+
 /*
 
 
@@ -17,7 +41,7 @@ if ( one == two) {
 
 /* double one = 10.0;
 
-double two = 20.0;
+/*double two = 20.0;
 
 while (one < two) {
 
@@ -38,6 +62,6 @@ double e;
 
 c=a+b-c/c+a*c;
 
-
-write(c);
+write ("my output is");
+write(c);*/
 
