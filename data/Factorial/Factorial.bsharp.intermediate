@@ -11,9 +11,13 @@ MOV ACC 0.0
 GREATER_THAN ACC input 0.0
 MOV X ACC
 END_CONDITION
+MOV ACC factorial
+MOV ACC input
 MUL ACC factorial input
 MOV X ACC
 MOV factorial ACC
+MOV ACC input
+MOV ACC 1.0
 SUB ACC input 1.0
 MOV X ACC
 MOV input ACC

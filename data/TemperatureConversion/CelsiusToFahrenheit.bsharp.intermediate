@@ -4,10 +4,14 @@ MOV celsius ACC
 TYPE double fahrenheit
 MOV ACC 0.0
 MOV fahrenheit ACC
+MOV ACC celsius
+MOV ACC 9.0
 MUL ACC celsius 9.0
 MOV X ACC
+MOV ACC 5.0
 DIV ACC X 5.0
 MOV X ACC
+MOV ACC 32.0
 ADD ACC X 32.0
 MOV X ACC
 MOV fahrenheit ACC

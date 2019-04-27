@@ -17,13 +17,18 @@ MOV ACC divisor
 GREATER_THAN_EQUAL_TO ACC dividend divisor
 MOV X ACC
 END_CONDITION
+MOV ACC quotient
+MOV ACC 1.0
 ADD ACC quotient 1.0
 MOV X ACC
 MOV quotient ACC
+MOV ACC dividend
+MOV ACC divisor
 SUB ACC dividend divisor
 MOV X ACC
 MOV dividend ACC
 END_WHILE
+MOV ACC dividend
 MOV remainder ACC
 WRITE "Quotient is "
 WRITE quotient
