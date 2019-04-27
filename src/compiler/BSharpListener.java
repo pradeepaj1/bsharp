@@ -57,6 +57,7 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitArithmeticExpression(BSharpParser.ArithmeticExpressionContext ctx) {
         super.exitArithmeticExpression(ctx);
+
         if (ctx.op != null) {
             String left = ctx.left.children.size() == 1 && ctx.left.getChild(0) instanceof TerminalNodeImpl ?
                     ctx.left.getChild(0).getText()
@@ -66,8 +67,6 @@ public class BSharpListener extends BSharpBaseListener {
                     : "Y";
             String operator = getOperatorIntermediateCode(ctx.op.getText());
             intermediateCode.add(operator + " ACC " + left + " " + right);
-
-
             if (!isTempRegUsed) {
                 intermediateCode.add("MOV "+ "X " + "ACC");
 
@@ -82,9 +81,13 @@ public class BSharpListener extends BSharpBaseListener {
                 }
                 isTempRegUsed = false;
             }
-
         }
-    }
+        else {
+
+            intermediateCode.add("MOV ACC " + ctx.children.get(0));
+        }
+        }
+
 
     private String getOperatorIntermediateCode(String operator) {
         String operatorIntermediateCode = null;
@@ -160,6 +163,9 @@ public class BSharpListener extends BSharpBaseListener {
             intermediateCode.add("MOV ACC " + ctx.children.get(4));
             intermediateCode.add("MOV " + ctx.children.get(2) + " " + "ACC");
         }
+//        if (ctx.children.size() == 1){
+//            intermediateCode.add("TYPE Value " + ctx.children.get(0));
+//        }
     }
 
     @Override
@@ -170,6 +176,9 @@ public class BSharpListener extends BSharpBaseListener {
     @Override
     public void exitLogicalExpression(BSharpParser.LogicalExpressionContext ctx) {
         super.exitLogicalExpression(ctx);
+        if (ctx.children.size() == 0){
+            intermediateCode.add("TYPE Value "+ ctx.children.get(0));
+        }
         if (ctx.op != null) {
                 String left = ctx.left.children.size() == 1 && ctx.left.getChild(0) instanceof TerminalNodeImpl ?
                         ctx.left.getChild(0).getText()
@@ -185,13 +194,18 @@ public class BSharpListener extends BSharpBaseListener {
                     isLogicalTemp = true;
                 } else {
                     if (left.equals("X") && !right.equals("Y")) {
-                        intermediateCode.add("MOV "+ "X " + "ACC");
+                        intermediateCode.add("MOV " + "X " + "ACC");
                     } else {
-                        intermediateCode.add("MOV "+ "Y " + "ACC");
+                        intermediateCode.add("MOV " + "Y " + "ACC");
                     }
                     isLogicalTemp = false;
                 }
             }
+            else {
+
+       intermediateCode.add("MOV ACC " + ctx.children.get(0));
+
+        }
         intermediateCode.add("END LOGICAL_EXPRESSION");
     }
 
@@ -267,13 +281,16 @@ public class BSharpListener extends BSharpBaseListener {
                     isLogicalTemp = true;
                 } else {
                     if (left.equals("X") && !right.equals("Y")) {
-                        intermediateCode.add("MOV "+ "X " + "ACC");
+                        intermediateCode.add("MOV " + "X " + "ACC");
                     } else {
-                        intermediateCode.add("MOV "+ "Y " + "ACC");
+                        intermediateCode.add("MOV " + "Y " + "ACC");
                     }
                     isLogicalTemp = false;
                 }
             }
+            else {
+             intermediateCode.add("MOV ACC " + ctx.children.get(0));
+         }
         }
 
     private String getRelationalOperatorIntermediateCode(String relOperator) {
@@ -319,5 +336,8 @@ public class BSharpListener extends BSharpBaseListener {
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb9ed8b6d75cb66f3e839e36af011068016bbe44
 }
