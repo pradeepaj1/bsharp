@@ -1,0 +1,22 @@
+// Find absolute value of a number
+
+double input_one = 20.0;
+double input_two = -15.476;
+double result_one;
+double result_two;
+
+if (input_one < 0.0) {
+    result_one = input_one * -1.0;
+} else {
+    result_one = input_one;
+}
+
+
+if (input_two < 0.0) {
+    result_two = input_two * -1.0;
+} else {
+    result_two = input_two;
+}
+
+write("Absolute value of input_one is "); write(result_one);
+write("Absolute value of input_two is "); write(result_two);
