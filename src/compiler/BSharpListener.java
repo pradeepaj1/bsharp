@@ -61,10 +61,10 @@ public class BSharpListener extends BSharpBaseListener {
         if (ctx.op != null) {
             String left = ctx.left.children.size() == 1 && ctx.left.getChild(0) instanceof TerminalNodeImpl ?
                     ctx.left.getChild(0).getText()
-                    : "X";
+                    : (isTempRegUsed) ? "Y" : "X";
             String right = ctx.right.children.size() == 1 && ctx.right.getChild(0) instanceof TerminalNodeImpl ?
                     ctx.right.getChild(0).getText()
-                    : "Y";
+                    : (isTempRegUsed) ? "X" : "Y";
             String operator = getOperatorIntermediateCode(ctx.op.getText());
             intermediateCode.add(operator + " ACC " + left + " " + right);
             if (!isTempRegUsed) {

@@ -1,13 +1,43 @@
-double one= 1.0;
-double two= 20.0;
-double three = -15.0;
-while(1.0+2.0 < 4.0) {
-    write("HELLO");
-    one=one+2.0;
-}
 
 
-g = a+b*c-i+oo;
-write ("WHILE END");
+/*
 
-write(three);
+
+
+if ( one == two) {
+    write ("equals ");
+} else {
+    if (two == one) {
+        write ("yes da");
+    } else {
+        write ("oh yeah");
+    }
+    write ("podi lusu");
+}*/
+
+/* double one = 10.0;
+
+double two = 20.0;
+
+while (one < two) {
+
+
+ write("do something ");
+ write (one);
+ one = one + 1.0;
+}*/
+
+double a = 6.0;
+ double b = 9.0;
+ double c = 9.0;
+ double d = 1.0;
+ double h = 3.0;
+
+double e;
+
+
+c=a+b-c/c+a*c;
+
+
+write(c);
+

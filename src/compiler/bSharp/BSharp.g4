@@ -26,14 +26,11 @@ singleStatement						: assignmentStatement SEMICOLON
 
 assignmentStatement      			: VARIABLE EQUAL DOUBLEVALUE
                                     | VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE VARIABLE EQUAL DOUBLEVALUE
-                                    | BOOL VARIABLE EQUAL BOOLVALUE
-                                    | DOUBLE VARIABLE EQUAL arithmeticExpression
-                                    | BOOL VARIABLE EQUAL booleanExpression
-                                    | VARIABLE EQUAL arithmeticExpression;
+                                    | VARIABLE EQUAL arithmeticExpression
+                                    | VARIABLE EQUAL booleanExpression;
 
 boolAssignment						: VARIABLE EQUAL BOOLVALUE
-                                    | BOOL WHITESPACE VARIABLE EQUAL BOOLVALUE;
+                                    | BOOL VARIABLE EQUAL BOOLVALUE;
 
 conditionalStatement				: ifBlock (elseBlock)?;
 

@@ -1,7 +1,6 @@
 package runtime;
 
 import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,19 +8,28 @@ import java.util.List;
 
 public class Runner {
 
+    private static Object acc;
+    private static int programCounter = 0;
+    private static List<String> code = readProgramFromFile();
+
+
     public static void main(String args[]) {
-        List<String> code = readProgramFromFile();
+       run("");
+    }
 
-        for (String line : code) {
-            evaluateLine(line);
+    private static void run(String intermediateCodeFilePath) {
+        while (programCounter < code.size()) {
+            evaluateLine(code.get(programCounter));
+            programCounter++;
         }
+        printFinalEnvironment();
+    }
 
-
+    private static void printFinalEnvironment() {
         for (HashMap.Entry entry: variableValueMap.entrySet()) {
             System.out.println(entry.getKey()+ "---" + entry.getValue());
         }
     }
-
 
     private static List<String> readProgramFromFile() {
         List<String> program = null;
@@ -34,7 +42,6 @@ public class Runner {
         return program;
     }
 
-
     private static HashMap<String, Integer> opcodeOperationMap = new HashMap<String, Integer>(){
         {
             put("TYPE", 1);
@@ -44,6 +51,17 @@ public class Runner {
             put("SUB", 5);
             put("MUL", 6);
             put("DIV", 7);
+            put("LESS_THAN", 8);
+            put("GREATER_THAN", 9);
+            put("LESS_THAN_EQUAL_TO", 10);
+            put("GREATER_THAN_EQUAL_TO", 11);
+            put("DOUBLE_EQUAL_TO", 12);
+            put("NOT_EQUAL_TO", 13);
+            put("AND", 14);
+            put("OR", 15);
+            put("NOT", 16);
+            put("START_IF_ELSE_BLOCK", 17);
+            put("BEGIN_WHILE", 18);
         }
     };
 
@@ -58,10 +76,10 @@ public class Runner {
         }
     };
 
-
     private static void evaluateLine(String line) {
         String[] splits = line.split(" ");
-        int opcode = opcodeOperationMap.get(splits[0]);
+        Integer opcode = opcodeOperationMap.get(splits[0]);
+        opcode = opcode != null ? opcode : -1;
         switch (opcode) {
             case 1:
                 handleType(splits[2], splits[1]);
@@ -70,9 +88,15 @@ public class Runner {
                 handleMove(splits[2], splits[1]);
                 break;
             case 3:
-                String displayResult = getVariableValue(splits[1]) == null
-                                        ? splits[1]
-                                        : getVariableValue(splits[1]).toString();
+                String displayResult = "";
+                if (splits[1].contains("\"")) {
+                    for (int i = 1; i < splits.length; i++) {
+                        displayResult += splits[i] + " ";
+                    }
+                    displayResult = displayResult.substring(1, displayResult.length()-2);
+                } else {
+                    displayResult = getVariableValue(splits[1]).toString();
+                }
                 System.out.println(displayResult);
                 break;
             case 4:
@@ -91,13 +115,54 @@ public class Runner {
                 Double divResult = (Double)getVariableValue(splits[2]) / (Double)getVariableValue(splits[3]);
                 setVariableValue(splits[1], divResult);
                 break;
+            case 8:
+                boolean ltResult = (Double)getVariableValue(splits[2]) < (Double)getVariableValue(splits[3]);
+                setVariableValue(splits[1], ltResult);
+                break;
+            case 9:
+                boolean gtResult = (Double)getVariableValue(splits[2]) > (Double)getVariableValue(splits[3]);
+                setVariableValue(splits[1], gtResult);
+                break;
+            case 10:
+                boolean lteResult = (Double)getVariableValue(splits[2]) <= (Double)getVariableValue(splits[3]);
+                setVariableValue(splits[1], lteResult);
+                break;
+            case 11:
+                boolean gteResult = (Double)getVariableValue(splits[2]) >= (Double)getVariableValue(splits[3]);
+                setVariableValue(splits[1], gteResult);
+                break;
+            case 12:
+                boolean eqResult = getVariableValue(splits[2]).equals(getVariableValue(splits[3]));
+                setVariableValue(splits[1], eqResult);
+                break;
+            case 13:
+                boolean neqResult = !(getVariableValue(splits[2]).equals(getVariableValue(splits[3])));
+                setVariableValue(splits[1], neqResult);
+                break;
+            case 14:
+                boolean andResult = (Boolean) getVariableValue(splits[2]) && (Boolean) getVariableValue(splits[3]);
+                setVariableValue(splits[1], andResult);
+                break;
+            case 15:
+                boolean orResult = (Boolean) getVariableValue(splits[2]) || (Boolean) getVariableValue(splits[3]);
+                setVariableValue(splits[1], orResult);
+                break;
+//            case 16:
+//                boolean notResult = !((Boolean) getVariableValue(splits[2]) && (Boolean) getVariableValue(splits[3]));
+//                setVariableValue(splits[1], notResult);
+//                break;
+            case 17:
+                ++programCounter;
+                processIfElseBlock();
+                break;
+            case 18:
+                ++programCounter;
+                processWhileLoop();
+            default:
+                break;
+
         }
     }
-
-
-
-    private static Object acc;
-    private static int programCounter = 1;
 
     private static Object getVariableValue(String variable) {
         Object value;
@@ -105,6 +170,13 @@ public class Runner {
             value = acc;
         } else {
             value = variableValueMap.get(variable);
+            if (value == null) {
+                if (variable.contains(".")) {
+                    value = Double.parseDouble(variable);
+                } else {
+                    value = Boolean.parseBoolean(variable);
+                }
+            }
         }
         return value;
     }
@@ -139,5 +211,56 @@ public class Runner {
         variableTypeMap.put(var, variableType);
     }
 
+    private static void processIfElseBlock() {
+        while (!code.get(programCounter).split(" ")[0].equals("END_CONDITION")) {
+            evaluateLine(code.get(programCounter));
+            programCounter++;
+        }
+        if ((Boolean) acc) {
+            while (!code.get(programCounter).split(" ")[0].equals("IF_BLOCK_ENDS")) {
+                evaluateLine(code.get(programCounter));
+                programCounter++;
+            }
+            while (!code.get(programCounter).split(" ")[0].equals("END_IF_ELSE_BLOCK")) {
+                programCounter++;
+            }
+        } else {
+            while (!code.get(programCounter).split(" ")[0].equals("IF_BLOCK_ENDS")) {
+                programCounter++;
+            }
+            while (!code.get(programCounter).split(" ")[0].equals("END_IF_ELSE_BLOCK")) {
+                evaluateLine(code.get(programCounter));
+                programCounter++;
+            }
+        }
+    }
+
+    private static void processWhileLoop() {
+        while (evaluateExpression(programCounter)) {
+            int tempProgramCounter = programCounter;
+
+            while (!code.get(tempProgramCounter).split(" ")[0].equals("END_CONDITION")) {
+                tempProgramCounter++;
+            }
+            tempProgramCounter++;
+            while (!code.get(tempProgramCounter).split(" ")[0].equals("END_WHILE")) {
+                evaluateLine(code.get(tempProgramCounter));
+                tempProgramCounter++;
+            }
+        }
+        while (!code.get(programCounter).split(" ")[0].equals("END_WHILE")) {
+            programCounter++;
+        }
+    }
+
+
+    private static boolean evaluateExpression(int programCounter) {
+        while (!code.get(programCounter).split(" ")[0].equals("END_CONDITION")) {
+            evaluateLine(code.get(programCounter));
+            programCounter++;
+        }
+
+        return (Boolean) acc;
+    }
 
 }
