@@ -335,9 +335,4 @@ public class BSharpListener extends BSharpBaseListener {
         intermediateCode.add("END_WHILE");
     }
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> cb9ed8b6d75cb66f3e839e36af011068016bbe44
 }
