@@ -10,6 +10,15 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The {@code Compiler} class compiles the bSharp language sourcecode
+ * and generates intermediate code
+ * @author Harika Kolli
+ * @author Sneha Lakshmi Narasimhan
+ * @version 1.0
+ * created on Mar 1, 2019
+ */
+
 public class Compiler {
 
     public static void main(String args[]) {

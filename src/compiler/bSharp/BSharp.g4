@@ -1,10 +1,15 @@
+/**
+ * Represents the grammar for the bSharp language
+ * @author Harika Kolli
+ * @author Sneha Lakshmi Narasimhan
+ * @author Pradeep Ambalam Jawaharlal
+ * @version 1.0
+ * created on Mar 1, 2019
+ */
+
 grammar BSharp;
 
-/*
-* Parser Rules.
-*
-*/
-
+/* Parser Rules */
 bSharp 								: (declaration)* (statements)*;
 
 declaration     					: DOUBLE VARIABLE SEMICOLON
@@ -64,11 +69,7 @@ relationalOperator					: '<' | '>' | '<=' | '>=' | '==' | '!=';
 logicalOperator					    : '&&' | '||';
 
 
-
-/*
-* Lexer Rules.
-*
-*/
+/* Lexer Rules */
 fragment DIGIT      : [0-9];
 fragment LOWERCASE  : [a-z] ;
 fragment UPPERCASE  : [A-Z] ;
