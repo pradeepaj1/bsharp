@@ -1,1 +1,20 @@
-WRITE "This is the output from the default program"
+TYPE double input
+MOV ACC 3.0
+MOV input ACC
+TYPE bool is_negative
+MOV ACC input
+MOV ACC 0.0
+LESS_THAN ACC input 0.0
+MOV X ACC
+MOV is_negative ACC
+START_IF_ELSE_BLOCK
+IF_BLOCK_STARTS
+CONDITION_START
+MOV ACC is_negative
+END_CONDITION
+WRITE "Negative"
+IF_BLOCK_ENDS
+ELSE_BLOCK_STARTS
+WRITE "Positive"
+ELSE_BLOCK_ENDS
+END_IF_ELSE_BLOCK
