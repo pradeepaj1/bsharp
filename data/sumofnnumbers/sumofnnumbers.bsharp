@@ -1,0 +1,13 @@
+
+// This program calculates the sum of numbers from 1 to n.
+
+// input variables
+double n = 10.0;
+double result = 0.0;
+
+while (n > 0.0) {
+    result = result + n;
+    n  = n - 1.0;
+}
+
+write("Sum is "); write(result);

@@ -24,7 +24,7 @@ public class Compiler {
     public static void main(String args[]) {
         String sourceCodeFilePath;
         if(args.length==0) {
-            sourceCodeFilePath = "data/defaultprogram.bsharp";
+            sourceCodeFilePath = "data/DefaultProgram/defaultprogram.bsharp";
         }
         else {
             sourceCodeFilePath = args[0];
