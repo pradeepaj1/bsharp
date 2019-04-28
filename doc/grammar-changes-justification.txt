@@ -1,0 +1,25 @@
+
+Grammar Changes:
+
+1. We removed the ‘start’ and ‘end’ tokens from the grammar which were previously used to indicate
+the start and end of the program. We made the grammar and the language simple, by making the first
+line as start of the program and the last line as the end of the program.
+
+2. In previous grammar, at least one statement has to be there for the program to successfully compile.
+We removed that restriction because a program with just a set of declaration (without any statements) is
+also a valid program.
+
+3. In previous grammar, we had a restriction on the number of WHITESPACES allowed in a statement, which made
+ our language less user friendly. In order to avoid this, we made our grammar to ignore all the whitespaces
+ while parsing the program.
+
+4. We found some ambiguities in the grammar, which made the parser to match with two rules for a single statement.
+We removed the ambiguities by updating the definition for ‘assignment’ and ‘declaration’ rules
+
+5. To allow an if block without an else block, we add an optional else block in the grammar
+
+6. We changed the order of the definition for ‘operators’ to solve the precedence
+
+7. We added support for negative numbers in the grammar.
+
+8. We added rules to skip the WhiteSpaces NewLine, BlockComment and LineComment.
